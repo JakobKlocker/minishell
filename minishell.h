@@ -15,3 +15,7 @@ typedef struct s_node
 	int	    out;
     void    *next;
 }		t_node;
+
+//builtins.c
+void    echo(t_node *node);
+

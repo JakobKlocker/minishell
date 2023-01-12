@@ -1,5 +1,7 @@
 NAME = minishell
 SRC = main.c \
+		builtins.c \
+		node_funcs.c \
 OBJ = $(SRC:.c=.o)
 CC = cc
 FLAG = -Wall -Werror -Wextra
