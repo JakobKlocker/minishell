@@ -1,11 +1,11 @@
 #include "libft/libft.h"
+#include <dirent.h>
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <dirent.h>
 #include <string.h>
-#include <signal.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
 typedef struct s_node
 {
@@ -19,3 +19,7 @@ typedef struct s_node
 //builtins.c
 void    echo(t_node *node);
 
+//cmd_split
+int	count_words(char *str);
+int	next_double_quote_exists(char *str);
+int	next_quote_exists(char *str);
