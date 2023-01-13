@@ -12,7 +12,7 @@ typedef struct s_node
 	char	**full_cmd;
 	char	*full_path;
 	int     in;
-	int	    **out;
+	int	    out[1024];
     void    *next;
 }		t_node;
 
