@@ -34,6 +34,9 @@ void    cd(t_node *node)
 {
     int i;
 
+    // Wenn env steht, hier OLDPWD "update" machen:
+    //  OLDPWD in eigener ENV = pwd();
+
     i = 0;
     while (node->full_cmd[i])
         i++;
@@ -51,27 +54,6 @@ void    cd(t_node *node)
         chdir(getenv("HOME"));
 }
 
-void    cd(char **str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-        i++;
-    if(i > 3)
-    {
-        printf("cd: too many arguments\n");
-        exit (0);
-    }
-    if (i > 1)
-    {
-        if (chdir(str[1]) != 0)
-            printf("cd: no such file or directory: %s\n", str[1]);
-    }
-    else
-        chdir(getenv("HOME"));
-}
-
 void    pwd(void)
 {
     char *buf;
@@ -79,4 +61,12 @@ void    pwd(void)
     buf = getcwd(NULL, 0);
     ft_putendl_fd(buf, 1);
     free(buf);
+}
+
+void env(char **envp)
+{
+    int i;
+
+    while (envp[i])
+        printf("\n%s", envp[i]);
 }
