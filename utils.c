@@ -1,4 +1,4 @@
-int check_flag(char *str)
+int check_if_flag(char *str)
 {
     int i;
 
