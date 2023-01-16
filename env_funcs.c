@@ -3,40 +3,30 @@
 int	main(int argc, char **argv, char **envp)
 {
     t_info info;
-    copy_env(&info, envp);
-    int i = 0;
-    while(info.envp[i])
-    {
-        ft_printf("%s\n", info.envp[i]);
-        i++;
-    }
+    if (copy_env(&info, envp) == 1)
+        exit (0);
 }
 
-static int    get_env_lines(char **envp)
-{
-    int i;
-    i = 0;
-    while(envp[i])
-    {
-        i++;
-    }
-    return (i);
-}
-
-void    copy_env(t_info *info, char **envp)
+int    copy_env(t_info *info, char **envp)
 {
     int i;
     int len;
-    i = 0;
 
-    info->envp = malloc(sizeof(char**) * (get_env_lines(envp) + 1));
-    while(envp[i])
+    envlst_t * head = NULL;
+    head = (envlst_t *)malloc(sizeof(envlst_t));
+        if (!head)
+            return (1);
+    info->envp = head;
+    i = 0;
+    while (envp[i])
     {
         len = ft_strlen(envp[i]);
-        info->envp[i] = malloc(len + 1);
-        memcpy(info->envp[i], envp[i], len);
-        info->envp[i][len] = '\0';
+        head->var = malloc(len + 1);
+        memcpy(head->var, envp[i], len);
+        head->var[len] = '\0';
+        head->next = NULL;
+        head = head->next;
         i++;
     }
-    info->envp[i] = NULL;
+    return (0);
 }

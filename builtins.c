@@ -3,26 +3,23 @@
 void    echo(t_node *node)
 {
     int ind;
-    int i;
     int is; 
     int k;
+    int j;
 
     k = 0;
     while (node->out[k])
     {
-        i = 1;
         is = -1;
         ind = -1;
-        if (check_flag(node->full_cmd[1]) == 0)
-        {
+        j = 1;
+        while (check_if_flag(node->full_cmd[j++]) == 0)
             ind = 0;
-            i++;
-        }
-        while (node->full_cmd[i])
-        {
+        while (node->full_cmd[j])
+        {   
             if (is == 0)
                 write (node->out[k], " ", 1);
-            write(node->out[k], node->full_cmd[i], ft_strlen(node->full_cmd[i++]));
+            write(node->out[k], node->full_cmd[j], ft_strlen(node->full_cmd[j++]));
             is = 0;
         }
         if (ind == -1)
@@ -90,9 +87,11 @@ void check_builtin (t_node *node, char **envp)
         unset(&node, envp);
 }
 
-void    export(t_node *node, char **envp)
+void    export(t_node *node, t_list *list)
 {
-
+    t_list * new_node;
+    new_node = node->full_cmd[1];
+    ft_lstadd_back()
 }
 
 void unset(t_node *node, char **envp)

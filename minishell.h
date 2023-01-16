@@ -1,3 +1,6 @@
+#ifndef MINISHELL_H
+# define MINISHELL_H
+
 #include "libft/libft.h"
 #include <dirent.h>
 #include <signal.h>
@@ -16,26 +19,32 @@ typedef struct s_node
     void    *next;
 }		t_node;
 
+//envp list
+typedef struct envlst 
+{
+	char *var;
+	struct envlst *next;
+} 		envlst_t;
+
 typedef struct s_info
 {
 	t_node	*head;
-	char	**envp;
+	envlst_t	*envp;
 	pid_t	pid;
 }		t_info;
-
 
 //builtins.c
 void    echo(t_node *node);
 void	pwd(void);
 void    cd(t_node *node);
-void 	check_builtin (t_node *node, char **envp)
+void 	check_builtin (t_node *node, char **envp);
 
-//utils
-int check_flag(char *str);
+//utils.c
+int check_if_flag(char *str);
 
 //env_functions
 static int    get_env_lines(char **envp);
-void    copy_env(t_info *info, char **envp);
+int    copy_env(t_info *info, char **envp);
 
 //first split, splits into 2D array removing spaces and keeping str inside quotes in one, lexer
 int	count_words(char *str);
@@ -45,3 +54,5 @@ static char	**do_split(char *s, int i, int j);
 char	**first_split(char *s);
 
 //second split, 
+
+#endif
