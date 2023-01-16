@@ -36,11 +36,14 @@ typedef struct s_info
 //builtins.c
 void    echo(t_node *node);
 void	pwd(void);
-void    cd(t_node *node);
-void 	check_builtin (t_node *node, char **envp);
+void    cd(t_node *node, t_info *info);
+void 	check_builtin(t_node *node, t_info *info);
+void 	env(t_info *info);
 
 //utils.c
 int check_if_flag(char *str);
+int check_for_appereance(char *str, char c);
+int check_equality(char *str1, char *str2);
 
 //env_functions
 static int    get_env_lines(char **envp);
