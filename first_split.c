@@ -1,54 +1,25 @@
 #include "libft/ft_strchr.c"
+#include "count_words.c"
 #include "minishell.h"
 
-// int	main(void) //int argc, char **argv, char **envp)
-// {
-// 	char	*input;
-// 	size_t	n;
-// 	char	**arr;
-// 	int		i;
-
-// 	input = malloc(100);
-// 	n = 100;
-// 	getline(&input, &n, stdin);
-// 	ft_printf("%i\n", count_words(input));
-// 	arr = split_words_spaces(input);
-// 	i = 0;
-// 	while (arr[i] != NULL)
-// 	{
-// 		ft_printf("%s\n", arr[i]);
-// 		i++;
-// 	}
-// }
-
-static int	count_words(char *str)
+int	main(void) //int argc, char **argv, char **envp)
 {
-	int	count;
+	char	*input;
+	size_t	n;
+	char	**arr;
+	int		i;
 
-	count = 0;
-	while (*str)
+	input = malloc(100);
+	n = 100;
+	getline(&input, &n, stdin);
+	ft_printf("words: %i\n", count_words(input));
+	arr = first_split(input);
+	i = 0;
+	while (arr[i] != NULL)
 	{
-		while (*str == ' ' || *str == '\n')
-			str++;
-		if (*str == '"' && ft_strchr(str + 1, '"'))
-		{
-			while (*(str + 1) != '"')
-				str++;
-			str = str + 2;
-		}
-		if (*str == '\'' && ft_strchr(str + 1, '\''))
-		{
-			while (*(str + 1) != '\'')
-				str++;
-			str = str + 2;
-		}
-		while (*str && *str != ' ' && *str != '\n')
-			str++;
-		if (*str == ' ' || *str == '\n')
-			count++;
-		str++;
+		ft_printf("%s\n", arr[i]);
+		i++;
 	}
-	return (count);
 }
 
 static int	getlen_till_ch(char *s, char c)
@@ -70,7 +41,11 @@ static int	getlen_till_ch(char *s, char c)
 				i++;
 			i = i + 2;
 		}
-		if (s[i] == c || s[i] == '\0' || s[i] == '\n')
+		if (((s[i] == '<' && s[i + 1] == '<') || (s[i] == '>' && s[i + 1] == '>')) && i == 0)
+			return (2);
+		if ((s[i] == '<' || s[i] == '>' || s[i] == '|') && i == 0)
+			return (1);
+		if (s[i] == c || s[i] == '\0' || s[i] == '\n' || s[i] == '|' || s[i] == '<' || s[i] == '>')
 			return (i);
 		i++;
 	}
@@ -131,7 +106,6 @@ static char	**do_split(char *s, int i, int j)
 	return (ret);
 }
 
-//Mallocs too much, for every "" + 2 spaces
 char	**first_split(char *s)
 {
 	char	**ret;
