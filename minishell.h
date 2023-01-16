@@ -28,6 +28,10 @@ typedef struct s_info
 void    echo(t_node *node);
 void	pwd(void);
 void    cd(t_node *node);
+void 	check_builtin (t_node *node, char **envp)
+
+//utils
+int check_flag(char *str);
 
 //env_functions
 static int    get_env_lines(char **envp);
