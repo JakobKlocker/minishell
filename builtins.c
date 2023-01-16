@@ -13,7 +13,7 @@ void    echo(t_node *node)
         i = 1;
         is = -1;
         ind = -1;
-        if (ft_strncmp(node->full_cmd[1], "-n", ft_strlen(node->full_cmd[1])) == 0)
+        if (check_flag(node->full_cmd[1]) == 0)
         {
             ind = 0;
             i++;
@@ -34,7 +34,7 @@ void    cd(t_node *node)
 {
     int i;
 
-    // Wenn env steht, hier OLDPWD "update" machen:
+    // Wenn env steht, hier PWD/OLDPWD "update" machen:
     //  OLDPWD in eigener ENV = pwd();
 
     i = 0;
@@ -65,8 +65,37 @@ void    pwd(void)
 
 void env(char **envp)
 {
+    while (*envp)
+        printf("%s", *envp++);
+}
+
+void check_builtin (t_node *node, char **envp)
+{
     int i;
 
-    while (envp[i])
-        printf("\n%s", envp[i]);
+    i = ft_strlen(node->full_cmd[0]);
+    if (!node->full_cmd)
+        return (0);
+    if (ft_strncmp(node->full_cmd[0], "echo", i) && i == 4)
+        echo(&node);
+    else if (ft_strncmp(node->full_cmd[0], "cd", i) && i == 2)
+        cd(&node);
+    else if (ft_strncmp(node->full_cmd[0], "pwd", i) && i == 3)
+        pwd();
+    else if (ft_strncmp(node->full_cmd[0], "env", i) && i == 3)
+        env(envp);
+    else if (ft_strncmp(node->full_cmd[0], "export", i) && i == 6)
+        export(&node, envp);
+    else if (ft_strncmp(node->full_cmd[0], "unset", i) && i == 5)
+        unset(&node, envp);
+}
+
+void    export(t_node *node, char **envp)
+{
+
+}
+
+void unset(t_node *node, char **envp)
+{
+
 }
