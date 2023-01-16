@@ -19,20 +19,20 @@ void    echo(t_node *node)
         {   
             if (is == 0)
                 write (node->out[k], " ", 1);
-            write(node->out[k], node->full_cmd[j], ft_strlen(node->full_cmd[j++]));
+            write(node->out[k], node->full_cmd[j], ft_strlen(node->full_cmd[j]));
             is = 0;
+            j++;
         }
         if (ind == -1)
             write (node->out[k], "\n", 1);
         }
 }
 
-void    cd(t_node *node)
+void    cd(t_node *node, t_info *info)
 {
     int i;
 
-    // Wenn env steht, hier PWD/OLDPWD "update" machen:
-    //  OLDPWD in eigener ENV = pwd();
+    // use export function to update OLDPWD/PWD
 
     i = 0;
     while (node->full_cmd[i])
@@ -60,41 +60,83 @@ void    pwd(void)
     free(buf);
 }
 
-void env(char **envp)
+void env(t_info *info)
 {
-    while (*envp)
-        printf("%s", *envp++);
+    while (info->envp)
+        printf("%s", info->envp++);
 }
 
-void check_builtin (t_node *node, char **envp)
+void check_builtin(t_node *node, t_info *info)
 {
     int i;
 
     i = ft_strlen(node->full_cmd[0]);
     if (!node->full_cmd)
         return (0);
-    if (ft_strncmp(node->full_cmd[0], "echo", i) && i == 4)
-        echo(&node);
+    if (ft_stssrncmp(node->full_cmd[0], "echo", i) && i == 4)
+        echo(node);
     else if (ft_strncmp(node->full_cmd[0], "cd", i) && i == 2)
-        cd(&node);
+        cd(node, info);
     else if (ft_strncmp(node->full_cmd[0], "pwd", i) && i == 3)
         pwd();
     else if (ft_strncmp(node->full_cmd[0], "env", i) && i == 3)
-        env(envp);
+        env(info);
     else if (ft_strncmp(node->full_cmd[0], "export", i) && i == 6)
-        export(&node, envp);
+        export(node, info);
     else if (ft_strncmp(node->full_cmd[0], "unset", i) && i == 5)
-        unset(&node, envp);
+        unset(node, info);
 }
 
 void    export(t_node *node, t_list *list)
 {
-    t_list * new_node;
-    new_node = node->full_cmd[1];
-    ft_lstadd_back()
+    
 }
 
-void unset(t_node *node, char **envp)
+void unset(t_node *node, t_info *list)
 {
+    int j;
+    int i;
 
+    i = 0;
+    j = 0;
+    while (node->full_cmd[j])
+    {
+        while (list->envp)
+        {
+            if(check_equality(node->full_cmd[j], list->envp == 0))
+            {
+                del_pos(list->head, i);
+            }
+            i++;
+            list->envp++;
+        }
+        j++;
+    }
+}
+
+int check_var(t_node *node)
+{
+    int i;
+
+    i = 0;
+    if (check_for_appereance(node->full_cmd[1], '=') == 0)
+    {
+        while (node->full_cmd[1][i] != '=')
+        {
+            if (node->full_cmd[1][i] >= 'a' && node->full_cmd[1][i] <= 'z')
+                i++;
+            else if (node->full_cmd[1][i] >= 'A' && node->full_cmd[1][i] <= 'Z')
+                i++;
+            else
+            {
+                i = 0;
+                printf("export: not an identifier: ");
+                while (node->full_cmd[1][i] != '=')
+                    write (1, &node->full_cmd[1][i], 1);
+                return (1);
+            }
+    }
+        return (0);
+    }
+    return (1);
 }
