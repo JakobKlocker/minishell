@@ -38,7 +38,7 @@ static int    get_env_lines(char **envp);
 void    copy_env(t_info *info, char **envp);
 
 //first split, splits into 2D array removing spaces and keeping str inside quotes in one, lexer
-static int	count_words(char *str);
+int	count_words(char *str);
 static int	getlen_till_ch(char *s, char c);
 static char	**malloc_2d(char *s, char c);
 static char	**do_split(char *s, int i, int j);
