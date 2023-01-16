@@ -2,25 +2,25 @@
 #include "count_words.c"
 #include "minishell.h"
 
-int	main(void) //int argc, char **argv, char **envp)
-{
-	char	*input;
-	size_t	n;
-	char	**arr;
-	int		i;
+// int	main(void) //int argc, char **argv, char **envp)
+// {
+// 	char	*input;
+// 	size_t	n;
+// 	char	**arr;
+// 	int		i;
 
-	input = malloc(100);
-	n = 100;
-	getline(&input, &n, stdin);
-	ft_printf("words: %i\n", count_words(input));
-	arr = first_split(input);
-	i = 0;
-	while (arr[i] != NULL)
-	{
-		ft_printf("%s\n", arr[i]);
-		i++;
-	}
-}
+// 	input = malloc(100);
+// 	n = 100;
+// 	getline(&input, &n, stdin);
+// 	ft_printf("words: %i\n", count_words(input));
+// 	arr = first_split(input);
+// 	i = 0;
+// 	while (arr[i] != NULL)
+// 	{
+// 		ft_printf("%s\n", arr[i]);
+// 		i++;
+// 	}
+// }
 
 static int	getlen_till_ch(char *s, char c)
 {
