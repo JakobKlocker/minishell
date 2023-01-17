@@ -63,7 +63,7 @@ void    pwd(void)
 void env(t_info *info)
 {
     while (info->envp)
-        printf("%s", info->envp++);
+        printf("%s\n", info->envp++);
 }
 
 void check_builtin(t_node *node, t_info *info)
@@ -73,7 +73,7 @@ void check_builtin(t_node *node, t_info *info)
     i = ft_strlen(node->full_cmd[0]);
     if (!node->full_cmd)
         return (0);
-    if (ft_stssrncmp(node->full_cmd[0], "echo", i) && i == 4)
+    if (ft_strncmp(node->full_cmd[0], "echo", i) && i == 4)
         echo(node);
     else if (ft_strncmp(node->full_cmd[0], "cd", i) && i == 2)
         cd(node, info);
@@ -89,7 +89,21 @@ void check_builtin(t_node *node, t_info *info)
 
 void    export(t_node *node, t_list *list)
 {
-    
+    int i;
+
+    i = 1;
+    if (arg_c(node) == 1)
+        //print env Alphabetisch
+    while (node->full_cmd[i])
+    {
+        if (check_for_appereance(node->full_cmd[i], '=') == 0 && check_alpha(node->full_cmd[i] == 0))
+        {
+            list->next = node->full_cmd[i];
+            ft_lstadd_back(list, list->next);
+            list->next = NULL;
+        }
+        i++;
+    }
 }
 
 void unset(t_node *node, t_info *list)
