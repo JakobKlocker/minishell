@@ -79,7 +79,14 @@ char				*get_env_for_var(t_info *info, char *dol_pos, int len);
 void    get_user_input(t_info *info);
 void    print_2d(char **str);
 
-//Second split, removes quotes where necessary
+//count words
+char	*is_in_quotes(char *str, int *count);
+
+
+//remove quotes
+void	**remove_quotes(char **s);
+int    count_quotes(char *str);
+char    *do_remove(char *str);
 
 //export.c
 void    export(t_node *node, t_list *list);
