@@ -81,4 +81,9 @@ void    print_2d(char **str);
 
 //Second split, removes quotes where necessary
 
+//export.c
+void    export(t_node *node, t_list *list);
+void    export_var(t_node *node, t_list *list);
+void    print_export(t_node *node, t_list *list);
+
 #endif
