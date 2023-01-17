@@ -5,7 +5,7 @@ SRC = main.c \
 OBJ = $(SRC:.c=.o)
 CC = cc
 FLAG = -Wall -Werror -Wextra
-OPTION = -o
+OPTION = -o -lreadline
 
 all: $(NAME)
 

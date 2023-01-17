@@ -26,6 +26,7 @@ char    *reaplce_empty(char *str, char *dol_pos, int our_var_len)
     if(0 < ptr_dif)
         ft_memcpy(ret, str, ptr_dif);
     ft_memcpy(ret + ptr_dif, str + ptr_dif + our_var_len + 1, ft_strlen(str + ptr_dif + our_var_len + 1));
+    ret[ft_strlen(str) - our_var_len - 1] = '\0';
     return (ret);
 }
 
