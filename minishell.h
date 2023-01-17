@@ -45,6 +45,8 @@ void 	env(t_info *info);
 int check_if_flag(char *str);
 int check_for_appereance(char *str, char c);
 int check_equality(char *str1, char *str2);
+int arg_c(t_node *node);
+int check_alpha(char *str);
 
 //env_functions
 static int    get_env_lines(char **envp);

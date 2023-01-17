@@ -53,3 +53,28 @@ void    edit_opwd(t_node *node, t_info *info)
 {
     
 }
+
+int check_alpha(char *str)
+{
+    int i;
+    
+    i = 0;
+    while (str[i])
+    {
+        if (str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'A' && str[i] <= 'Z')
+            i++;
+        else
+            return (-1);
+    }
+    return (0);
+}
+
+int arg_c(t_node *node)
+{
+    int i;
+
+    i = 0;
+    while (node->full_cmd[i])
+        i++;
+    return (i);
+}
