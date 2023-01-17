@@ -16,7 +16,7 @@ static char	*is_special(char *str, int *count)
 	return (str);
 }
 
-static char	*is_in_quotes(char *str, int *count)
+char	*is_in_quotes(char *str, int *count)
 {
 	if (*str == '"' && ft_strchr(str + 1, '"'))
 	{
