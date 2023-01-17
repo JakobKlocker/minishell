@@ -1,3 +1,5 @@
+#include "minishell.h"
+
 static char	*is_special(char *str, int *count)
 {
 	if ((*str == '<' && *(str + 1) == '<') || (*str == '>' && *(str
