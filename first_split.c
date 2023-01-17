@@ -1,5 +1,3 @@
-#include "libft/ft_strchr.c"
-#include "count_words.c"
 #include "minishell.h"
 
 // int	main(void) //int argc, char **argv, char **envp)
