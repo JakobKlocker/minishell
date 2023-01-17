@@ -82,8 +82,15 @@ void    print_2d(char **str);
 //count words
 char	*is_in_quotes(char *str, int *count);
 
+
 //remove quotes
 void	**remove_quotes(char **s);
 int    count_quotes(char *str);
 char    *do_remove(char *str);
+
+//export.c
+void    export(t_node *node, t_list *list);
+void    export_var(t_node *node, t_list *list);
+void    print_export(t_node *node, t_list *list);
+
 #endif

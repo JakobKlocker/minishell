@@ -87,25 +87,6 @@ void check_builtin(t_node *node, t_info *info)
         unset(node, info);
 }
 
-void    export(t_node *node, t_list *list)
-{
-    int i;
-
-    i = 1;
-    if (arg_c(node) == 1)
-        //print env Alphabetisch
-    while (node->full_cmd[i])
-    {
-        if (check_for_appereance(node->full_cmd[i], '=') == 0 && check_alpha(node->full_cmd[i] == 0))
-        {
-            list->next = node->full_cmd[i];
-            ft_lstadd_back(list, list->next);
-            list->next = NULL;
-        }
-        i++;
-    }
-}
-
 void unset(t_node *node, t_info *list)
 {
     int j;
