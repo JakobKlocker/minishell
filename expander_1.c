@@ -12,7 +12,7 @@ int get_len_env_var(char *var)
 
 char    *get_env_for_var(t_info *info, char *dol_pos, int len)
 {
-    envlst_t *tmp;
+    t_envlst *tmp;
     char    tmp_repl;
     char    *ret;
     tmp_repl = dol_pos[len];
