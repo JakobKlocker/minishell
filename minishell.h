@@ -90,9 +90,16 @@ int    count_quotes(char *str);
 char    *do_remove(char *str);
 
 //export.c
-void    export(t_node *node, t_list *list);
-void    export_var(t_node *node, t_list *list);
-void    print_export(t_node *node, t_list *list);
+void    export(t_node *node, t_info *info);
+void    export_var(t_node *node, t_info *info);
+void    print_export(t_node *node, t_info *info);
+void 	print_env(char **envp);
+int 	count_var(t_info *info);
+char 	*ft_strcpy(char *dest, const char *src);
+int 	ft_strcmp(const char *str1, const char *str2);
+void    ft_lstaddback(t_info *info);
+void    ft_lstinsert(t_info *info, char *str);
+void	ft_putendlfd(char *s, int fd);
 
 //prepare_nodes.c
 int get_node_count(t_info *info);
