@@ -20,20 +20,20 @@ typedef struct s_node
 	char			*full_path;
 	int				in;
 	int				out[1024];
-	void			*next;
+	struct s_node	*next;
 }					t_node;
 
 //envp list
-typedef struct envlst
+typedef struct s_envlst
 {
 	char			*var;
-	struct envlst	*next;
-}					envlst_t;
+	struct s_envlst	*next;
+}					t_envlst;
 
 typedef struct s_info
 {
 	t_node			*head;
-	envlst_t		*envp;
+	t_envlst		*envp;
 	pid_t			pid;
 	char			**cmd_input;
 }					t_info;
@@ -78,6 +78,7 @@ char				*get_env_for_var(t_info *info, char *dol_pos, int len);
 //main
 void    get_user_input(t_info *info);
 void    print_2d(char **str);
+void    print_nodes(t_info *info);
 
 //count words
 char	*is_in_quotes(char *str, int *count);
@@ -92,5 +93,11 @@ char    *do_remove(char *str);
 void    export(t_node *node, t_list *list);
 void    export_var(t_node *node, t_list *list);
 void    print_export(t_node *node, t_list *list);
+
+//prepare_nodes.c
+int get_node_count(t_info *info);
+int get_words_for_node(char **str, int  i);
+void *creat_nodes(t_info *info, int node_count);
+void    prepare_nodes(t_info *info);
 
 #endif
