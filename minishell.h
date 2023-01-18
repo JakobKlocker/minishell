@@ -20,7 +20,7 @@ typedef struct s_node
 	char			*full_path;
 	int				in;
 	int				out[1024];
-	void			*next;
+	struct s_node	*next;
 }					t_node;
 
 //envp list
@@ -78,6 +78,7 @@ char				*get_env_for_var(t_info *info, char *dol_pos, int len);
 //main
 void    get_user_input(t_info *info);
 void    print_2d(char **str);
+void    print_nodes(t_info *info);
 
 //count words
 char	*is_in_quotes(char *str, int *count);
@@ -99,5 +100,11 @@ int 	ft_strcmp(const char *str1, const char *str2);
 void    ft_lstaddback(t_info *info);
 void    ft_lstinsert(t_info *info, char *str);
 void	ft_putendlfd(char *s, int fd);
+
+//prepare_nodes.c
+int get_node_count(t_info *info);
+int get_words_for_node(char **str, int  i);
+void *creat_nodes(t_info *info, int node_count);
+void    prepare_nodes(t_info *info);
 
 #endif

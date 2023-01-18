@@ -18,8 +18,9 @@ void    get_user_input(t_info *info)
         info->cmd_input = first_split(input);
         expander(info->cmd_input, info);
         remove_quotes(info->cmd_input);
-        //prepare_nodes(info);
-        print_2d(info->cmd_input);
+        prepare_nodes(info);
+        //print_2d(info->cmd_input);   
+        print_nodes(info);
         write(1, "\n", 1);
         input = readline("testshell:");
     }
@@ -35,5 +36,25 @@ void    print_2d(char **str)
     {
         ft_printf("%s\n", str[i]);
         i++;
+    }
+}
+
+void    print_nodes(t_info *info)
+{
+    int i;
+    t_node *tmp;
+
+    tmp = info->head;
+    i = 0;
+    while(tmp)
+    {
+        while(tmp->full_cmd[i])
+        {
+            ft_printf("%s ", tmp->full_cmd[i]);
+            i++;
+        }
+        i = 0;
+        ft_printf("\n");
+        tmp = tmp->next;
     }
 }
