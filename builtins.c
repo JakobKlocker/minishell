@@ -1,5 +1,29 @@
 #include "minishell.h"
 
+int check_builtin(t_node *node, t_info *info)
+{
+    int i;
+
+    i = ft_strlen(node->full_cmd[0]);
+    if (!node->full_cmd)
+        return (0);
+    if (ft_strcmp(node->full_cmd[0], "echo") == 0 && i == 4)
+        echo(node);
+    else if (ft_strcmp(node->full_cmd[0], "cd") == 0 && i == 2)
+        cd(node, info);
+    else if (ft_strcmp(node->full_cmd[0], "pwd") == 0 && i == 3)
+         pwd();
+    else if (ft_strcmp(node->full_cmd[0], "env") == 0 && i == 3)
+        env(info);
+    else if (ft_strcmp(node->full_cmd[0], "export") == 0 && i == 6)
+        export(node, info);
+    // else if (ft_strncmp(node->full_cmd[0], "unset", i) && i == 5)
+    //     unset(node, info);
+    else
+        return (0);
+    return (1);
+}
+
 void    echo(t_node *node)
 {
     int ind;
@@ -13,8 +37,11 @@ void    echo(t_node *node)
         is = -1;
         ind = -1;
         j = 1;
-        while (check_if_flag(node->full_cmd[j++]) == 0)
+        while (check_if_flag(node->full_cmd[j]) == 0)
+        {
             ind = 0;
+            j++;
+        }
         while (node->full_cmd[j])
         {   
             if (is == 0)
@@ -25,6 +52,7 @@ void    echo(t_node *node)
         }
         if (ind == -1)
             write (node->out[k], "\n", 1);
+        k++;
         }
 }
 
@@ -68,25 +96,4 @@ void env(t_info *info)
         printf("%s\n", temp->var);
         temp = temp->next;
     }
-}
-
-void check_builtin(t_node *node, t_info *info)
-{
-    int i;
-
-    i = ft_strlen(node->full_cmd[0]);
-    // if (!node->full_cmd)
-        //return (0);
-    if (ft_strncmp(node->full_cmd[0], "echo", i) && i == 4)
-        echo(node);
-    else if (ft_strncmp(node->full_cmd[0], "cd", i) && i == 2)
-        cd(node, info);
-    // else if (ft_strncmp(node->full_cmd[0], "pwd", i) && i == 3)
-    //     pwd();
-    else if (ft_strncmp(node->full_cmd[0], "env", i) && i == 3)
-        env(info);
-    else if (ft_strncmp(node->full_cmd[0], "export", i) && i == 6)
-        export(node, info);
-    // else if (ft_strncmp(node->full_cmd[0], "unset", i) && i == 5)
-    //     unset(node, info);
 }

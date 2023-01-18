@@ -39,11 +39,17 @@ typedef struct s_info
 }					t_info;
 
 //builtins.c
-void				echo(t_node *node);
-void				pwd(void);
-void				cd(t_node *node, t_info *info);
-void				check_builtin(t_node *node, t_info *info);
-void				env(t_info *info);
+void	echo(t_node *node);
+void	pwd(void);
+void	cd(t_node *node, t_info *info);
+int		check_builtin(t_node *node, t_info *info);
+void	env(t_info *info);
+
+//builtins1.c
+void	unset(t_node *node, t_info *list);
+void	ft_putendlfd(char *s, int fd);
+int		check_var(t_node *node);
+
 
 //utils.c
 int check_if_flag(char *str);
@@ -93,13 +99,17 @@ char    *do_remove(char *str);
 void    export(t_node *node, t_info *info);
 void    export_var(t_node *node, t_info *info);
 void    print_export(t_node *node, t_info *info);
-void 	print_env(char **envp);
 int 	count_var(t_info *info);
+void 	print_env(char **envp);
+
+//export_utils.c
 char 	*ft_strcpy(char *dest, const char *src);
 int 	ft_strcmp(const char *str1, const char *str2);
 void    ft_lstaddback(t_info *info);
 void    ft_lstinsert(t_info *info, char *str);
-void	ft_putendlfd(char *s, int fd);
+int 	check_exist(t_info *info, char *str);
+void    replace_var(t_info *info, char *str);
+int ft_strcmpeq(char *str1, char *str2);
 
 //prepare_nodes.c
 int get_node_count(t_info *info);
