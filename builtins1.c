@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	ft_putendlfd(char *s, int fd)
+void    ft_putendlfd(char *s, int fd)
 {
 	if (!s || !fd)
 		return ;
