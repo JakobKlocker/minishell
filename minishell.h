@@ -13,12 +13,15 @@
 # include <string.h>
 # include <sys/wait.h>
 # include <unistd.h>
+#include <fcntl.h>
 
 typedef struct s_node
 {
 	char			**full_cmd;
+	// "/bin/ls"
 	char			*full_path;
-	int				in;
+	// bin/"/bin/ls"
+	int				in[1024];
 	int				out[1024];
 	struct s_node	*next;
 }					t_node;
