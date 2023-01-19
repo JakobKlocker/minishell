@@ -1,19 +1,5 @@
 #include "minishell.h"
 
-// int	main(int argc, char **argv, char **envp)
-// {
-//     t_info info;
-//     char *line;
-//     char **input;
-//      size_t n = 100;
-//     line = malloc(100);
-// 	getline(&line, &n, stdin);
-//     copy_env(&info, envp);
-//     input = first_split(line);
-//     expander(input, &info);
-//     ft_printf("%s", input[0]);
-// }
-
 char    *reaplce_empty(char *str, char *dol_pos, int our_var_len)
 {
     char    *ret;

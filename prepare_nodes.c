@@ -98,6 +98,8 @@ void	create_redircets(t_info *info)
 			create_fd_out(info, &i, cur);
 		if (info->cmd_input[i][0] == '<' && info->cmd_input[i][1] == '\0')
 			create_fd_in(info, &i, cur);
+		if (info->cmd_input[i][0] == '<' && info->cmd_input[i][1] == '<')
+			heredoc(info, &i, cur);
 	}
 }
 
@@ -110,6 +112,7 @@ void	init_nodes(t_info *info)
 	while (tmp)
 	{
 		tmp->full_path = NULL;
+		tmp->heredoc = NULL;
 		tmp->in[0] = 0;
 		tmp->out[0] = 1;
 		ft_memset(tmp->in + 1, -1, 1023 * 4);
@@ -192,7 +195,7 @@ int	check_valid_redirects(t_info *info)
 
 int	prepare_nodes(t_info *info)
 {
-    if (check_valid_redirects(info) == 0)
+	if (check_valid_redirects(info) == 0)
 		return (-1);
 	malloc_nodes(info);
 	init_nodes(info);
