@@ -1,19 +1,5 @@
 #include "minishell.h"
 
-// int	main(int argc, char **argv, char **envp)
-// {
-//     t_info info;
-//     char *line;
-//     char **input;
-//      size_t n = 100;
-//     line = malloc(100);
-// 	getline(&line, &n, stdin);
-//     copy_env(&info, envp);
-//     input = first_split(line);
-//     expander(input, &info);
-//     ft_printf("%s", input[0]);
-// }
-
 char    *reaplce_empty(char *str, char *dol_pos, int our_var_len)
 {
     char    *ret;
@@ -75,9 +61,10 @@ void    expander(char   **str, t_info *info)
     while(str[i])
     {
         dol_pos = get_dol_pos(str[i]);
-        if(dol_pos)
+        while(dol_pos)
         {
             replace_env(str, i, dol_pos, info);
+            dol_pos = get_dol_pos(str[i]);
         }
         dol_pos = NULL;
         i++;

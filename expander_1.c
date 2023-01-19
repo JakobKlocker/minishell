@@ -5,7 +5,7 @@ int get_len_env_var(char *var)
     int i;
 
     i = 0;
-    while(var[i] != ' ' && var[i] != '\n' && var[i] != '\0' && var[i] != '\'' && var[i] != '"')
+    while(var[i] != ' ' && var[i] != '\n' && var[i] != '\0' && var[i] != '\'' && var[i] != '"' && var[i] != '$')
         i++;
     return (i);
 }
