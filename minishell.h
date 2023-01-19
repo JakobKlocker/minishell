@@ -18,9 +18,8 @@
 typedef struct s_node
 {
 	char			**full_cmd;
-	// "/bin/ls"
 	char			*full_path;
-	// bin/"/bin/ls"
+	char			*heredoc;
 	int				in[1024];
 	int				out[1024];
 	struct s_node	*next;
@@ -117,7 +116,23 @@ int ft_strcmpeq(char *str1, char *str2);
 //prepare_nodes.c
 int get_node_count(t_info *info);
 int get_words_for_node(char **str, int  i);
-void *creat_nodes(t_info *info, int node_count);
-int    prepare_nodes(t_info *info);
+void	malloc_nodes(t_info *info);
+void	create_fd_out(t_info *info, int *i, t_node *cur);
+void	create_fd_in(t_info *info, int *i, t_node *cur);
+void	create_redircets(t_info *info);
+void	init_nodes(t_info *info);
+void	create_full_cmd(t_info *info);
+void	malloc_2d_nodes(t_info *info);
+int	check_valid_redirects(t_info *info);
+int	prepare_nodes(t_info *info);
+
+//heredoc.c
+void    heredoc(t_info *info, int *i, t_node *cur);
+
+//full_path.c
+char    *get_path_ptr(t_info *info);
+void    get_full_path(t_info *info);
+void    free_split(char **split_paths);
+char    **split_add_cmd(char *path_ptr, t_node *cur);
 
 #endif

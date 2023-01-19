@@ -19,7 +19,7 @@ void    get_user_input(t_info *info)
         expander(info->cmd_input, info);
         remove_quotes(info->cmd_input);
         prepare_nodes(info);
-        //print_2d(info->cmd_input);
+        get_full_path(info);
         print_nodes(info);
         write(1, "\n", 1);
         input = readline("testshell:");
