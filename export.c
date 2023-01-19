@@ -12,23 +12,34 @@ void    export(t_node *node, t_info *info)
 void    export_var(t_node *node, t_info *info)
 {
     int i;
+
     i = 1;
     while (node->full_cmd[i])
     {
+        if (check_for_sc(node->full_cmd[i]) == 1)
+        {
         if (check_exist(info, node->full_cmd[i]) == 1)
         {
             if (check_for_appereance(node->full_cmd[i], '=') == 0 && check_alpha(node->full_cmd[i]) == 0)
             {
-                ft_lstaddback(info);
-                ft_lstinsert(info, node->full_cmd[i]);
-                i++;
+                if (!(node->full_cmd[i][0] == '=') && !(ft_strlen(node->full_cmd[i]) == 1))
+                {
+                    if (ft_isdigit1(node->full_cmd[i + 1][0]) == 1)
+                        printf("export: not an identifier: %s\n", node->full_cmd[i+1]);
+                    ft_lstaddback(info);
+                    ft_lstinsert(info, node->full_cmd[i]);
+                }
             }
         }
         else
         {
-            replace_var(info, node->full_cmd[i]);
-            i++;
-        }    
+            if (check_for_appereance(node->full_cmd[i], '=') == 0 && check_alpha(node->full_cmd[i]) == 0)
+                replace_var(info, node->full_cmd[i]);
+        }   
+        }
+        else
+            print_arg(node->full_cmd[i]);
+        i++;
     }
 }
 
@@ -41,23 +52,23 @@ void    print_export(t_node *node, t_info *info)
     t_envlst *temp;
     char *tmp;
 
-
     temp = info->envp;
     i = 0;
     j = 0;
     len = 0;
     envp = (char **)malloc(sizeof(char**) * count_var(info));
-    while (temp)
+    while (temp->next)
     {
         envp[i] = malloc(sizeof(char *) * (ft_strlen(info->envp->var)));
-        ft_strcpy(envp[i], temp->var);
+        envp[i] =  temp->var;
+        ft_printf("%s\n", envp[i]);
         i++;
         temp = temp->next;
     }
     while (j < count_var(info))
     {
         i = 0;
-        while (i < count_var(info))
+        while (i < count_var(info) - 1)
         {
             if (ft_strcmp(envp[i], envp[i + 1]) > 0)
             {
@@ -70,9 +81,6 @@ void    print_export(t_node *node, t_info *info)
         j++;
     }
     print_env(envp);
-    i = 0;
-    while (envp[i])
-        free(envp[i++]);
     free(envp);
 }
 
@@ -98,6 +106,7 @@ void print_env(char **envp)
     i = 0;
     while (envp[i])
     {
-        printf("%s\n", envp[i++]);
+        printf("%s\n", envp[i]);
+        i++;
     }
 }

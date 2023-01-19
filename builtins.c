@@ -91,7 +91,7 @@ void    pwd(void)
 void env(t_info *info)
 {
     t_envlst *temp = info->envp;
-    while (temp)
+    while (temp->next != NULL)
     {
         printf("%s\n", temp->var);
         temp = temp->next;
