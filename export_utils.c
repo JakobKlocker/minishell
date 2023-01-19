@@ -46,7 +46,7 @@ void    ft_lstinsert(t_info *info, char *str)
     t_envlst *temp = info->envp;
     while (temp->next->next)
         temp = temp->next;
-    ft_strcpy(temp->var, str);
+    temp->var = str;
 }
 
 int check_exist(t_info *info, char *str)
@@ -63,30 +63,13 @@ int check_exist(t_info *info, char *str)
     return (1);
 }
 
-int ft_strcmpeq(char *str1, char *str2)
+void print_arg(char *str)
 {
     int i;
 
     i = 0;
-    if (!str1 || !str2)
-        return (-1);
-    while (str1[i] && str2[i] && str2[i] != '=' && str1[i] != '=') 
-    {
-        if (str1[i] != str2[i])
-            return str1[i] - str2[i];
-        i++;
-    }
-    return str1[i] - str2[i];
-}
-
-void    replace_var(t_info *info, char *str)
-{
-    t_envlst *temp;
-
-    temp = info->envp;
-    while (temp)
-    {
-        if (ft_strcmpeq(temp->var, str) == 0)
-            temp->var = str;
-    }
+    ft_printf ("export: not valid in this context: ");
+    while (str[i] != '=')
+        write (1, &str[i++], 1);
+    write (1, "\n", 1);
 }

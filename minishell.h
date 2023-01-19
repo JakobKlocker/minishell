@@ -110,10 +110,17 @@ int 	ft_strcmp(const char *str1, const char *str2);
 void    ft_lstaddback(t_info *info);
 void    ft_lstinsert(t_info *info, char *str);
 int 	check_exist(t_info *info, char *str);
+void 	print_arg(char *str);
+
+//export_utils2.c
+int 	ft_strcmpeq(char *str1, char *str2);
 void    replace_var(t_info *info, char *str);
-int ft_strcmpeq(char *str1, char *str2);
+int		ft_isdigit1(int c);
+int 	check_for_sc(char *str);
+int		ft_isalnum1(int c);
 
 //prepare_nodes.c
+
 int get_node_count(t_info *info);
 int get_words_for_node(char **str, int  i);
 void	malloc_nodes(t_info *info);
