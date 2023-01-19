@@ -118,6 +118,6 @@ int ft_strcmpeq(char *str1, char *str2);
 int get_node_count(t_info *info);
 int get_words_for_node(char **str, int  i);
 void *creat_nodes(t_info *info, int node_count);
-void    prepare_nodes(t_info *info);
+int    prepare_nodes(t_info *info);
 
 #endif
