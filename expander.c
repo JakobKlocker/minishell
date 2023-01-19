@@ -75,9 +75,10 @@ void    expander(char   **str, t_info *info)
     while(str[i])
     {
         dol_pos = get_dol_pos(str[i]);
-        if(dol_pos)
+        while(dol_pos)
         {
             replace_env(str, i, dol_pos, info);
+            dol_pos = get_dol_pos(str[i]);
         }
         dol_pos = NULL;
         i++;
