@@ -49,11 +49,6 @@ int check_equality(char *str1, char *str2)
     return (0);
 }
 
-void    edit_opwd(t_node *node, t_info *info)
-{
-    
-}
-
 int check_alpha(char *str)
 {
     int i;

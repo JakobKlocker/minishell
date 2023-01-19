@@ -60,8 +60,7 @@ void    cd(t_node *node, t_info *info)
 {
     int i;
 
-    // use export function to update OLDPWD/PWD
-
+    acess_env(info, 1);
     i = 0;
     while (node->full_cmd[i])
         i++;
@@ -77,6 +76,7 @@ void    cd(t_node *node, t_info *info)
     }
     else
         chdir(getenv("HOME"));
+    acess_env(info, 0);
 }
 
 void    pwd(void)

@@ -142,4 +142,11 @@ void    get_full_path(t_info *info);
 void    free_split(char **split_paths);
 char    **split_add_cmd(char *path_ptr, t_node *cur);
 
+//utils2.c
+void    acess_env(t_info *info, int id);
+static int	getlen(char *str);
+static char	*check_malloc(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
+void	*ft_calloc(size_t nmemb, size_t size);
+
 #endif
