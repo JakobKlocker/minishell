@@ -45,3 +45,17 @@ int check_for_sc(char *str)
     }
     return (1);
 }
+
+void print_arg(char *str, int type)
+{
+    int i;
+
+    i = 0;
+    if (type == 1)
+        ft_printf ("export: not valid in this context: ");
+    else if (type == 2)
+        ft_printf("export: not an identifier: ");
+    while (str[i] != '=')
+        write (1, &str[i++], 1);
+    write (1, "\n", 1);
+}
