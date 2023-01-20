@@ -12,27 +12,20 @@ void    ft_putendlfd(char *s, int fd)
 	write(fd, "\n", 1);
 }
 
-// void unset(t_node *node, t_info *list)
-// {
-//     int j;
-//     int i;
+void unset(t_node *node, t_info *info)
+{
+    int i;
 
-//     i = 0;
-//     j = 0;
-//     while (node->full_cmd[j])
-//     {
-//         while (list->envp)
-//         {
-//             if(check_equality(node->full_cmd[j], list->envp == 0))
-//             {
-//                 del_pos(list->head, i);
-//             }
-//             i++;
-//             list->envp++;
-//         }
-//         j++;
-//     }
-// }
+    i = 1;
+    while (node->full_cmd[i])
+    {
+        if (check_exist(info, node->full_cmd[i]) == 0)
+                delete_node(node->full_cmd[i], info);
+        else if(check_for_sc(node->full_cmd[i]) == 0)
+            ft_printf("unset: %s: invalid parameter name\n", node->full_cmd[i]);
+        i++;
+    }
+}
 
 int check_var(t_node *node)
 {
@@ -59,4 +52,35 @@ int check_var(t_node *node)
         return (0);
     }
     return (1);
+}
+
+void    delete_node(char *str, t_info *info)
+{
+    t_envlst *temp = info->envp;
+    t_envlst *prev;
+    
+    if (temp != NULL && ft_strcmpeq(temp->var, str) == 0)
+    {
+        info->envp = temp->next;
+        free(temp);
+        return;
+    }
+    while (temp && ft_strcmpeq(temp->var, str) != 0)
+    {
+        prev = temp;
+        temp = temp->next;
+    }
+    if (temp == NULL)
+        return;
+    prev->next = temp->next;
+    free(temp);
+}
+
+void    print_err(int err, char *str)
+{
+    if (err == 2)
+        ft_printf("cd: no such file or directory: %s\n", str);
+    else if (err == 20)
+        ft_printf("cd: not a directory: %s\n", str);
+
 }
