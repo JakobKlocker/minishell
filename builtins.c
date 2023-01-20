@@ -4,9 +4,9 @@ int check_builtin(t_node *node, t_info *info)
 {
     int i;
 
-    i = ft_strlen(node->full_cmd[0]);
     if (!node->full_cmd)
         return (0);
+    i = ft_strlen(node->full_cmd[0]);
     if (ft_strcmp(node->full_cmd[0], "echo") == 0 && i == 4)
         echo(node);
     else if (ft_strcmp(node->full_cmd[0], "cd") == 0 && i == 2)
@@ -17,8 +17,8 @@ int check_builtin(t_node *node, t_info *info)
         env(info);
     else if (ft_strcmp(node->full_cmd[0], "export") == 0 && i == 6)
         export(node, info);
-    // else if (ft_strncmp(node->full_cmd[0], "unset", i) && i == 5)
-    //     unset(node, info);
+    else if (ft_strncmp(node->full_cmd[0], "unset", i) == 0 && i == 5)
+        unset(node, info);
     else
         return (0);
     return (1);
@@ -72,7 +72,7 @@ void    cd(t_node *node, t_info *info)
     if (i > 1)
     {
         if(chdir(node->full_cmd[1]) != 0)
-            printf("cd: no such file or directory: %s\n", node->full_cmd[1]);
+            print_err(errno, node->full_cmd[1]);
     }
     else
         chdir(getenv("HOME"));

@@ -13,7 +13,10 @@ int ft_strcmpeq(char *str1, char *str2)
             return str1[i] - str2[i];
         i++;
     }
-    return str1[i] - str2[i];
+    if (str1[i] == '=' || str2[i] == '=')
+        return (0);
+    else
+        return str1[i] - str2[i];
 }
 
 void    replace_var(t_info *info, char *str)
@@ -29,31 +32,16 @@ void    replace_var(t_info *info, char *str)
     }
 }
 
-int	ft_isdigit1(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-
 int check_for_sc(char *str)
 {
     int i;
 
     i = 0;
-    while (str[i])
+    while (str[i] && str[i] != '=')
     {
-        if (ft_isalnum1(str[i]) == 0)
+        if (ft_isalnum(str[i]) == 0)
             return (0);
         i++;
     }
     return (1);
-}
-
-int	ft_isalnum1(int c)
-{
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || (c >= '0'
-			&& c <= '9'))
-		return (1);
-	return (0);
 }
