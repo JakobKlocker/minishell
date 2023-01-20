@@ -25,6 +25,8 @@ int check_builtin(t_node *node, t_info *info)
     return (1);
 }
 
+
+//more than 25 lines
 void    echo(t_node *node)
 {
     int ind;

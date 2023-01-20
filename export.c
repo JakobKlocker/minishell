@@ -9,6 +9,8 @@ void    export(t_node *node, t_info *info)
         export_var(node, info);
 }
 
+
+//more than 25 lines
 void    export_var(t_node *node, t_info *info)
 {
     int i;
@@ -45,28 +47,16 @@ void    export_var(t_node *node, t_info *info)
     }
 }
 
+//More than 25 lines
 void    print_export(t_node *node, t_info *info)
 {
     int i;
     char **envp;
     int j;
-    int len;
-    t_envlst *temp;
-    char *tmp;
+    char *temp;
 
-    temp = info->envp;
-    i = 0;
     j = 0;
-    len = 0;
-    envp = (char **)malloc(sizeof(char**) * count_var(info));
-    while (temp->next)
-    {
-        envp[i] = malloc(sizeof(char *) * (ft_strlen(info->envp->var)));
-        envp[i] =  temp->var;
-        ft_printf("%s\n", envp[i]);
-        i++;
-        temp = temp->next;
-    }
+    envp = list_to_2d(info);
     while (j < count_var(info))
     {
         i = 0;
@@ -74,9 +64,9 @@ void    print_export(t_node *node, t_info *info)
         {
             if (ft_strcmp(envp[i], envp[i + 1]) > 0)
             {
-                tmp = envp[i];
+                temp = envp[i];
                 envp[i] = envp[i + 1];
-                envp[i + 1] = tmp;
+                envp[i + 1] = temp;
             }
             i++;
         }
