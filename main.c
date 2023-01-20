@@ -10,7 +10,7 @@ int	main(int argc, char **argv, char **envp)
 void    get_user_input(t_info *info)
 {
     char    *input;
-
+    int status;
     input = readline("testshell: ");
     while(ft_strncmp(input, "exit\0", 5) != 0) 
     {
@@ -19,8 +19,10 @@ void    get_user_input(t_info *info)
         remove_quotes(info->cmd_input);
         prepare_nodes(info);
         get_full_path(info);
+        handle_forks(info);
         if(fork() == 0)
             executer(info, info->head);
+        wait(&status);
         input = readline("testshell: ");
     }
     //Free everything here

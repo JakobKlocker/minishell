@@ -39,6 +39,7 @@ typedef struct s_info
 	t_envlst		*envp;
 	pid_t			pid;
 	char			**cmd_input;
+	int				fd[2];
 }					t_info;
 
 //builtins.c
