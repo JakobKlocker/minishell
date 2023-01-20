@@ -49,21 +49,6 @@ int check_equality(char *str1, char *str2)
     return (0);
 }
 
-int check_alpha(char *str)
-{
-    int i;
-    
-    i = 0;
-    while (str[i] && str[i] != '=')
-    {
-        if (str[i] >= 'a' && str[i] <= 'z' || str[i] >= 'A' && str[i] <= 'Z')
-            i++;
-        else
-            return (-1);
-    }
-    return (0);
-}
-
 int arg_c(t_node *node)
 {
     int i;

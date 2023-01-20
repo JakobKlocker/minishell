@@ -18,25 +18,25 @@ void    export_var(t_node *node, t_info *info)
     {
         if (check_for_sc(node->full_cmd[i]) == 1)
         {
-        if (check_exist(info, node->full_cmd[i]) == 1)
-        {
-            if (check_for_appereance(node->full_cmd[i], '=') == 0 && check_alpha(node->full_cmd[i]) == 0)
+            if (check_exist(info, node->full_cmd[i]) == 1)
             {
-                if (!(node->full_cmd[i][0] == '=') && !(ft_strlen(node->full_cmd[i]) == 1))
+                if (check_for_appereance(node->full_cmd[i], '=') == 0 && ft_isalpha(node->full_cmd[i][0]) == 1)
                 {
-                    if (ft_isdigit1(node->full_cmd[i + 1][0]) == 1)
-                        printf("export: not an identifier: %s\n", node->full_cmd[i+1]);
-                    ft_lstaddback(info);
-                    ft_lstinsert(info, node->full_cmd[i]);
+                    if (!(node->full_cmd[i][0] == '=') && !(ft_strlen(node->full_cmd[i]) == 1))
+                    {
+                        if (arg_c(node) > 2 && ft_isdigit(node->full_cmd[i +1 ][0]) == 1)
+                            printf("export: not an identifier: %s\n", node->full_cmd[i+1]);
+                        ft_lstaddback(info);
+                        ft_lstinsert(info, node->full_cmd[i]);
+                    }
                 }
             }
-        }
-        else
-        {
-            if (check_for_appereance(node->full_cmd[i], '=') == 0 && check_alpha(node->full_cmd[i]) == 0)
-                replace_var(info, node->full_cmd[i]);
-        }   
-        }
+            else
+            {
+                if (check_for_appereance(node->full_cmd[i], '=') == 0 && ft_isalpha(node->full_cmd[i][0]) == 1)
+                    replace_var(info, node->full_cmd[i]);
+            }   
+            }
         else
             print_arg(node->full_cmd[i]);
         i++;

@@ -14,6 +14,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 #include <fcntl.h>
+#include <errno.h>
 
 typedef struct s_node
 {
@@ -51,6 +52,8 @@ void	env(t_info *info);
 void	unset(t_node *node, t_info *list);
 void	ft_putendlfd(char *s, int fd);
 int		check_var(t_node *node);
+void    delete_node(char *str, t_info *info);
+void    print_err(int err, char *str);
 
 
 //utils.c
