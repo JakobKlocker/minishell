@@ -23,9 +23,9 @@ void    executer(t_info *info, t_node *cur)
 {
     char    **envp;
     
+    ft_printf("In executer");
     envp = list_to_2d(info);
     if(execve(cur->full_path, cur->full_cmd, envp) == -1)
         ft_printf("zsh: command not found: %s\n", cur->full_cmd[0]);
     free(envp);
-    exit(0);
 }
