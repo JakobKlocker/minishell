@@ -157,4 +157,7 @@ void	*ft_calloc(size_t nmemb, size_t size);
 char    **list_to_2d(t_info *info);
 void    executer(t_info *info, t_node *cur);
 
+//handle_forks.c
+void    handle_forks(t_info *info);
+
 #endif

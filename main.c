@@ -20,9 +20,6 @@ void    get_user_input(t_info *info)
         prepare_nodes(info);
         get_full_path(info);
         handle_forks(info);
-        if(fork() == 0)
-            executer(info, info->head);
-        wait(&status);
         input = readline("testshell: ");
     }
     //Free everything here

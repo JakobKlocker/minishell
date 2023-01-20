@@ -20,7 +20,8 @@ int check_builtin(t_node *node, t_info *info)
     else if (ft_strncmp(node->full_cmd[0], "unset", i) == 0 && i == 5)
         unset(node, info);
     else
-        return (0);
+        executer(info, node);
+    exit(0);
     return (1);
 }
 
