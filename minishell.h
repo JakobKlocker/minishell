@@ -149,4 +149,8 @@ static char	*check_malloc(char const *s1, char const *s2);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t nmemb, size_t size);
 
+//Executer
+char    **list_to_2d(t_info *info);
+void    executer(t_info *info, t_node *cur);
+
 #endif

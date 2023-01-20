@@ -27,7 +27,7 @@ int    copy_env(t_info *info, char **envp)
         }
         len = ft_strlen(envp[i]);
         head->var = malloc(len + 1);
-        memcpy(head->var, envp[i], len);
+        ft_memcpy(head->var, envp[i], len);
         head->var[len] = '\0';
         i++;
     }
