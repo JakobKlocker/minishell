@@ -14,15 +14,14 @@ void    get_user_input(t_info *info)
     input = readline("testshell: ");
     while(ft_strncmp(input, "exit\0", 5) != 0) 
     {
-        write(1, "\n", 1);
         info->cmd_input = first_split(input);
         expander(info->cmd_input, info);
         remove_quotes(info->cmd_input);
         prepare_nodes(info);
         get_full_path(info);
-        print_nodes(info);
-        write(1, "\n", 1);
-        input = readline("testshell:");
+        if(fork() == 0)
+            executer(info, info->head);
+        input = readline("testshell: ");
     }
     //Free everything here
 }
