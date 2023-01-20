@@ -24,12 +24,14 @@ void    export_var(t_node *node, t_info *info)
                 {
                     if (!(node->full_cmd[i][0] == '=') && !(ft_strlen(node->full_cmd[i]) == 1))
                     {
-                        if (arg_c(node) > 2 && ft_isdigit(node->full_cmd[i +1 ][0]) == 1)
+                        if ((arg_c(node) > 2 && ft_isdigit(node->full_cmd[i + 1][0]) == 1) || ft_isdigit(node->full_cmd[i][0] == 1))
                             printf("export: not an identifier: %s\n", node->full_cmd[i+1]);
                         ft_lstaddback(info);
                         ft_lstinsert(info, node->full_cmd[i]);
                     }
                 }
+                else
+                    print_arg(node->full_cmd[i], 2);
             }
             else
             {
@@ -38,7 +40,7 @@ void    export_var(t_node *node, t_info *info)
             }   
             }
         else
-            print_arg(node->full_cmd[i]);
+            print_arg(node->full_cmd[i], 1);
         i++;
     }
 }

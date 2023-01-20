@@ -114,14 +114,12 @@ int 	ft_strcmp(const char *str1, const char *str2);
 void    ft_lstaddback(t_info *info);
 void    ft_lstinsert(t_info *info, char *str);
 int 	check_exist(t_info *info, char *str);
-void 	print_arg(char *str);
 
 //export_utils2.c
 int 	ft_strcmpeq(char *str1, char *str2);
 void    replace_var(t_info *info, char *str);
-int		ft_isdigit1(int c);
 int 	check_for_sc(char *str);
-int		ft_isalnum1(int c);
+void print_arg(char *str, int type);
 
 //prepare_nodes.c
 

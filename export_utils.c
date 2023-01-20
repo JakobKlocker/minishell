@@ -62,14 +62,3 @@ int check_exist(t_info *info, char *str)
     }
     return (1);
 }
-
-void print_arg(char *str)
-{
-    int i;
-
-    i = 0;
-    ft_printf ("export: not valid in this context: ");
-    while (str[i] != '=')
-        write (1, &str[i++], 1);
-    write (1, "\n", 1);
-}
