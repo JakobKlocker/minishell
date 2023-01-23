@@ -82,5 +82,4 @@ void    print_err(int err, char *str)
         ft_printf("cd: no such file or directory: %s\n", str);
     else if (err == 20)
         ft_printf("cd: not a directory: %s\n", str);
-
 }

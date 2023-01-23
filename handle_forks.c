@@ -40,6 +40,7 @@ void    handle_executer(t_info *info, t_node *cur)
     i = 0;
     if(!cur->full_path)
     {
+
         ft_printf("zsh: command not found: %s\n", cur->full_cmd[0]);
         return;
     }
