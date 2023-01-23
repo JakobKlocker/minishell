@@ -4,8 +4,6 @@ int check_builtin(t_node *node, t_info *info)
 {
     int i;
 
-    if (!node->full_cmd)
-        return (1);
     i = ft_strlen(node->full_cmd[0]);
     if (ft_strcmp(node->full_cmd[0], "echo") == 0 && i == 4)
         echo(node);
@@ -22,12 +20,7 @@ int check_builtin(t_node *node, t_info *info)
     else if (ft_strcmp(node->full_cmd[0], "exit") == 0 && i == 4)
         our_exit(node, info);
     else
-    {
-        signal(SIGINT, SIG_IGN);
-        signal(SIGQUIT, SIG_IGN);
-        executer(info, node);
-    }
-    // exit(0);
+      return (0);
     return (1);
 }
 
