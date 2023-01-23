@@ -12,6 +12,8 @@ void    heredoc(t_info *info, int *i, t_node *cur)
     {
         tmp = heredoc;
         heredoc = ft_strjoin(heredoc, line);
+        free(tmp);
+        tmp = heredoc;
         heredoc = ft_strjoin(heredoc, "\n");
         free(tmp);
         line = readline("heredoc> ");
