@@ -59,9 +59,9 @@ void	create_fd_out(t_info *info, int *i, t_node *cur)
 	int	fd;
 
 	if (info->cmd_input[*i][1] == '\0')
-		fd = open(info->cmd_input[*i + 1], O_WRONLY | O_CREAT);
+		fd = open(info->cmd_input[*i + 1], O_RDWR | O_CREAT, 0777);
 	else
-		fd = open(info->cmd_input[*i + 1], O_WRONLY | O_CREAT | O_APPEND);
+		fd = open(info->cmd_input[*i + 1], O_RDWR | O_CREAT | O_APPEND, 0777);
 	j = 0;
 	while (cur->out[j] != -1 && cur->out[j] != 1)
 		j++;
@@ -75,7 +75,7 @@ void	create_fd_in(t_info *info, int *i, t_node *cur)
 	int	fd;
 
 	if (info->cmd_input[*i][1] == '\0')
-		fd = open(info->cmd_input[*i + 1], O_RDONLY);
+		fd = open(info->cmd_input[*i + 1], O_RDWR);
 	j = 0;
 	while (cur->in[j] != -1 && cur->in[j] != 0)
 		j++;

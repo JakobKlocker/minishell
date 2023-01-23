@@ -4,8 +4,6 @@ int check_builtin(t_node *node, t_info *info)
 {
     int i;
 
-    if (!node->full_cmd)
-        return (0);
     i = ft_strlen(node->full_cmd[0]);
     if (ft_strcmp(node->full_cmd[0], "echo") == 0 && i == 4)
         echo(node);
@@ -20,8 +18,7 @@ int check_builtin(t_node *node, t_info *info)
     else if (ft_strncmp(node->full_cmd[0], "unset", i) == 0 && i == 5)
         unset(node, info);
     else
-        executer(info, node);
-    exit(0);
+        return(0);
     return (1);
 }
 
