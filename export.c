@@ -47,7 +47,6 @@ void    export_var(t_node *node, t_info *info)
     }
 }
 
-//More than 25 lines
 void    print_export(t_node *node, t_info *info)
 {
     int i;

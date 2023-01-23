@@ -1,5 +1,7 @@
 #include "minishell.h"
 
+int g_status = 0;
+
 int	main(int argc, char **argv, char **envp)
 {
     t_info info;
@@ -10,21 +12,19 @@ int	main(int argc, char **argv, char **envp)
 void    get_user_input(t_info *info)
 {
     char    *input;
-
+    int status;
     input = readline("testshell: ");
     while(ft_strncmp(input, "exit\0", 5) != 0) 
     {
-        write(1, "\n", 1);
+        signal(SIGINT, handle_signal);
+		signal(SIGQUIT, SIG_IGN);
         info->cmd_input = first_split(input);
         expander(info->cmd_input, info);
         remove_quotes(info->cmd_input);
         prepare_nodes(info);
-        //print_2d(info->cmd_input);   
-        //print_nodes(info);
-        info->head->out[0] = 1;
-        check_builtin(info->head, info);
-        write(1, "\n", 1);
-        input = readline("testshell:");
+        get_full_path(info);
+        handle_forks(info);
+        input = readline("testshell: ");
     }
     //Free everything here
 }

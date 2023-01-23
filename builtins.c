@@ -5,23 +5,29 @@ int check_builtin(t_node *node, t_info *info)
     int i;
 
     if (!node->full_cmd)
-        return (0);
+        return (1);
     i = ft_strlen(node->full_cmd[0]);
     if (ft_strcmp(node->full_cmd[0], "echo") == 0 && i == 4)
         echo(node);
     else if (ft_strcmp(node->full_cmd[0], "cd") == 0 && i == 2)
         cd(node, info);
     else if (ft_strcmp(node->full_cmd[0], "pwd") == 0 && i == 3)
-         pwd();
+        pwd();
     else if (ft_strcmp(node->full_cmd[0], "env") == 0 && i == 3)
         env(info);
     else if (ft_strcmp(node->full_cmd[0], "export") == 0 && i == 6)
         export(node, info);
-    else if (ft_strncmp(node->full_cmd[0], "unset", i) == 0 && i == 5)
+    else if (ft_strcmp(node->full_cmd[0], "unset") == 0 && i == 5)
         unset(node, info);
+    else if (ft_strcmp(node->full_cmd[0], "exit") == 0 && i == 4)
+        our_exit(node, info);
     else
+    {
+        signal(SIGINT, SIG_IGN);
+        signal(SIGQUIT, SIG_IGN);
         executer(info, node);
-    exit(0);
+    }
+    // exit(0);
     return (1);
 }
 

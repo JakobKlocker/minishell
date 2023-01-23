@@ -12,18 +12,8 @@ void    handle_forks(t_info *info)
     while(cur)
     {
         pid = fork();
-        if(cur->next)
-        {
-            dup2(fd[0], 0);
-            dup2(fd[1], 1);
-        }
-        else
-        {
-            dup2(stdin_copy, 0);
-            dup2(stdout_copy, 1);
-        }
         if(pid == 0)
-            check_builtin(cur, info);
+        check_builtin(cur, info);
         wait(NULL);
         cur = cur->next;
     }

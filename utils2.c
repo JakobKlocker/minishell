@@ -26,4 +26,12 @@ void    acess_env(t_info *info, int id)
     }
 }
 
+void    our_exit(t_node *node, t_info *info)
+{
+    if (arg_c(node) > 2)
+        ft_printf("exit: too many arguments\n");
+    else
+       //free everything 
+    exit (g_status);
+}
 

@@ -16,6 +16,7 @@ char	*get_path_ptr(t_info *info)
 
 char    **split_add_cmd(char *path_ptr, t_node *cur)
 {
+
     char    **ret;
     char    *tmp;
     char    *tmp1;
@@ -23,7 +24,7 @@ char    **split_add_cmd(char *path_ptr, t_node *cur)
 
     ret = ft_split(path_ptr, ':');
     i = 0;
-    while(ret[i])
+    while(ret && ret[i])
     {
         tmp = ft_strjoin(ret[i], "/");
         tmp1 = ft_strjoin(tmp, cur->full_cmd[0]);
@@ -70,7 +71,8 @@ void	get_full_path(t_info *info)
 			}
             i++;
 		}
-        free_split(split_paths);
+		if(split_paths)
+        	free_split(split_paths);
 		cur = cur->next;
 	}
 }

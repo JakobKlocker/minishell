@@ -13,8 +13,11 @@
 # include <string.h>
 # include <sys/wait.h>
 # include <unistd.h>
-#include <fcntl.h>
-#include <errno.h>
+# include <fcntl.h>
+# include <errno.h>
+# include <sys/ioctl.h>
+
+extern int	g_status;
 
 typedef struct s_node
 {
@@ -146,10 +149,7 @@ char    **split_add_cmd(char *path_ptr, t_node *cur);
 
 //utils2.c
 void    acess_env(t_info *info, int id);
-static int	getlen(char *str);
-static char	*check_malloc(char const *s1, char const *s2);
-char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_calloc(size_t nmemb, size_t size);
+void    our_exit(t_node *node, t_info *info);
 
 //Executer
 char    **list_to_2d(t_info *info);
@@ -157,5 +157,8 @@ void    executer(t_info *info, t_node *cur);
 
 //handle_forks.c
 void    handle_forks(t_info *info);
+
+//signal.c
+void    handle_signal(int sig);
 
 #endif
