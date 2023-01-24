@@ -55,7 +55,7 @@ void print_arg(char *str, int type)
         ft_printf ("export: not valid in this context: ");
     else if (type == 2)
         ft_printf("export: not an identifier: ");
-    while (str[i] != '=')
+    while (str[i] != '=' && str[i])
         write (1, &str[i++], 1);
     write (1, "\n", 1);
 }
