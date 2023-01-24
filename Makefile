@@ -35,7 +35,17 @@ $(NAME):
 
 run: 
 	$(MAKE) all -C ./libft
+	$(MAKE) re
 	$(CC) $(OPTION) $(NAME) $(SRC) libft/libft.a -lreadline && ./$(NAME)
+
+val: all
+	make -C ./ clean
+	valgrind --leak-check=full \
+	--show-leak-kinds=all \
+	--track-origins=yes \
+	--verbose \
+	--log-file=valgrind-out.txt \
+		./$(NAME)
 
 clean: 
 		$(MAKE) clean -C ./libft

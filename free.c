@@ -1,29 +1,38 @@
 #include "minishell.h"
 
-void    our_exit(t_node *node, t_info *info)
+void our_exit(t_node *node, t_info *info)
 {
     int i;
-    
+    t_node *cur;
+    t_node *tmp;
+    cur = node;
+
     i = 0;
-    if(node->full_cmd[0] == 0)
+    while (cur)
     {
-        while (node->full_cmd[i])
-            free(node->full_cmd[i++]);
-        free (node->full_cmd);
+        if (cur->full_cmd != NULL)
+        {
+            while (cur->full_cmd[i])
+                free(cur->full_cmd[i++]);
+            free(cur->full_cmd);
+        }
+        if (cur->full_path)
+            free(cur->full_path);
+        if (cur->heredoc)
+            free(cur->heredoc);
+        i = 0;
+        tmp = cur;
+        cur = cur->next;
+        free(tmp);
     }
-    if (node->full_path)
-        free (node->full_path);
-    if (node->heredoc)
-        free (node->heredoc);
-    free (info->head);
     i = 0;
-    while (info->cmd_input[i])
-        free (info->cmd_input[i++]);
-    free (info->cmd_input);
+    if (info->cmd_input)
+        free(info->cmd_input);
+    free_list(info);
     exit(g_status);
 }
 
-void    free_list(t_info *info)
+void free_list(t_info *info)
 {
     t_envlst *current = info->envp;
     t_envlst *next;
@@ -32,7 +41,8 @@ void    free_list(t_info *info)
         while (current)
         {
             next = current->next;
-            free (current);
+            free(current->var);
+            free(current);
             current = next;
         }
     }

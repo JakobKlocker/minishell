@@ -6,13 +6,12 @@ int	main(int argc, char **argv, char **envp)
 {
     t_info info;
     copy_env(&info, envp);
-    init_sigaction();
+    init_sigaction(&info);
     get_user_input(&info);
 }
 
 void    get_user_input(t_info *info)
 {   
-    t_node node;
     char    *input;
     while(1) 
     {
@@ -27,7 +26,7 @@ void    get_user_input(t_info *info)
         handle_forks(info);
         free(input);
     }
-    our_exit(&node, info);
+    our_exit(info->head, info);
 }
 
 void    print_2d(char **str)
