@@ -159,6 +159,8 @@ void    executer(t_info *info, t_node *cur);
 void    handle_forks(t_info *info);
 
 //signal.c
-void    handle_signal(int sig);
+void    handle_sigint(int sig);
+void  handle_sigquit(int sig);
+void    init_sigaction(void);
 
 #endif

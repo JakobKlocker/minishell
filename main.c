@@ -4,7 +4,10 @@ int g_status = 0;
 
 int	main(int argc, char **argv, char **envp)
 {
+    (void) argc;
+    (void) argv;
     t_info info;
+    init_sigaction();
     copy_env(&info, envp);
     get_user_input(&info);
 }
