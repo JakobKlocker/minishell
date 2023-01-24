@@ -166,10 +166,11 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in);
 
 //signal.c
 void    handle_sigint(int sig);
-void  	handle_sigquit(int sig);
-void  	init_sigaction(void);
+void 	handle_sigquit(int sig, siginfo_t *info, void *ptr);
+void  	init_sigaction(t_info *info);
 
 //free.c
 void	our_exit(t_node *node, t_info *info);
+void    free_list(t_info *info);
 
 #endif
