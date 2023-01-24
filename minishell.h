@@ -151,7 +151,6 @@ char    **split_add_cmd(char *path_ptr, t_node *cur);
 
 //utils2.c
 void    acess_env(t_info *info, int id);
-void    our_exit(t_node *node, t_info *info);
 
 //Executer
 char    **list_to_2d(t_info *info);
@@ -165,5 +164,9 @@ void    handle_executer(t_info *info, t_node *cur);
 //signal.c
 void    handle_sigint(int sig);
 void  	handle_sigquit(int sig);
-void    init_sigaction(void);
+void  	init_sigaction(void);
+
+//free.c
+void	our_exit(t_node *node, t_info *info);
+
 #endif

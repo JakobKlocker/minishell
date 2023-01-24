@@ -37,8 +37,10 @@ void	handle_forks(t_info *info)
 				cur_in = info->fd[READ_END];
 				cur = cur->next;
 			}
+		
 		}
-		close(cur_in);
+		cur = cur->next;
+		//close(cur_in);
 	}
 }
 

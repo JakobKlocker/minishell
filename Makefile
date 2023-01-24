@@ -20,6 +20,7 @@ SRC = main.c \
 	signal.c \
 	utils.c \
 	utils2.c \
+	free.c \
 
 OBJ = $(SRC:.c=.o)
 CC = gcc
