@@ -25,8 +25,8 @@ typedef struct s_node
 	char			**full_cmd;
 	char			*full_path;
 	char			*heredoc;
-	int				in[1024];
-	int				out[1024];
+	int				in;
+	int				out;
 	struct s_node	*next;
 }					t_node;
 
@@ -51,6 +51,7 @@ void	echo(t_node *node);
 void	pwd(void);
 void	cd(t_node *node, t_info *info);
 int		check_builtin(t_node *node, t_info *info);
+int 	check_builtin_fork(t_node *node, t_info *info);
 void	env(t_info *info);
 
 //builtins1.c
@@ -158,6 +159,8 @@ void    executer(t_info *info, t_node *cur);
 
 //handle_forks.c
 void    handle_forks(t_info *info);
+void	add_pipe_fd(t_node *node, t_info *info);
+void    handle_executer(t_info *info, t_node *cur);
 
 //signal.c
 void    handle_sigint(int sig);

@@ -55,31 +55,23 @@ void	malloc_nodes(t_info *info)
 
 void	create_fd_out(t_info *info, int *i, t_node *cur)
 {
-	int	j;
 	int	fd;
 
 	if (info->cmd_input[*i][1] == '\0')
 		fd = open(info->cmd_input[*i + 1], O_RDWR | O_CREAT, 0777);
 	else
 		fd = open(info->cmd_input[*i + 1], O_RDWR | O_CREAT | O_APPEND, 0777);
-	j = 0;
-	while (cur->out[j] != -1 && cur->out[j] != 1)
-		j++;
-	cur->out[j] = fd;
+	cur->out = fd;
 	*i = *i + 1;
 }
 
 void	create_fd_in(t_info *info, int *i, t_node *cur)
 {
-	int	j;
 	int	fd;
 
 	if (info->cmd_input[*i][1] == '\0')
 		fd = open(info->cmd_input[*i + 1], O_RDWR);
-	j = 0;
-	while (cur->in[j] != -1 && cur->in[j] != 0)
-		j++;
-	cur->in[j] = fd;
+	cur->in = fd;
 	*i = *i + 1;
 }
 
@@ -113,10 +105,8 @@ void	init_nodes(t_info *info)
 	{
 		tmp->full_path = NULL;
 		tmp->heredoc = NULL;
-		tmp->in[0] = 0;
-		tmp->out[0] = 1;
-		ft_memset(tmp->in + 1, -1, 1023 * 4);
-		ft_memset(tmp->out + 1, -1, 1023 * 4);
+		tmp->in = 0;
+		tmp->out = 1;
 		tmp = tmp->next;
 	}
 }
