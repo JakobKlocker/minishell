@@ -16,7 +16,7 @@ void    get_user_input(t_info *info)
 {
     char    *input;
     int status;
-    input = readline("testshell: ");
+    input = readline("minishell: ");
     while(ft_strncmp(input, "exit\0", 5) != 0) 
     {
         info->cmd_input = first_split(input);
@@ -25,7 +25,7 @@ void    get_user_input(t_info *info)
         prepare_nodes(info);
         get_full_path(info);
         handle_forks(info);
-        input = readline("testshell: ");
+        input = readline("minishell: ");
     }
     //Free everything here
 }

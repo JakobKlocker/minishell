@@ -20,11 +20,12 @@ void    handle_sigint(int sig)
 {
   if (sig == SIGINT)
   {
-    ft_printf("Hello");
     g_status = 130;
-		ioctl(STDIN_FILENO, TIOCSTI, "\n");    
+    write (2, "\b\b  ", 4);
+    rl_on_new_line();
+    write (2, "\n", 1);
     rl_replace_line("", 0);
-	  rl_on_new_line();
+	  rl_redisplay();
   }
 }
 
@@ -32,8 +33,8 @@ void  handle_sigquit(int sig)
 {
   if (sig == SIGQUIT)
   {
-    ft_printf("World");
     g_status =  130;
-    write(2, "Quit", 4);
+    // write (STDERR_FILENO, "Quit\n", 5);
+    exit(g_status);
   }
 }

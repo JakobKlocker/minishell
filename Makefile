@@ -15,24 +15,26 @@ SRC = main.c \
 	full_path.c \
 	handle_forks.c \
 	heredoc.c \
-	main.c \
 	prepare_nodes.c \
 	remove_quotes.c \
 	signal.c \
 	utils.c \
 	utils2.c \
-	minishell.h \
 
 OBJ = $(SRC:.c=.o)
-CC = cc
+CC = gcc
 FLAG = -Wall -Werror -Wextra
-OPTION = -o -lreadline
+OPTION = -o
 
 all: $(NAME)
 
 $(NAME):		
 		$(MAKE) all -C ./libft
-		$(CC) $(OPTION) $(SRC) -o $(NAME)
+		$(CC) $(OPTION) $(NAME) $(SRC) libft/libft.a -lreadline
+
+run: 
+	$(MAKE) all -C ./libft
+	$(CC) $(OPTION) $(NAME) $(SRC) libft/libft.a -lreadline && ./$(NAME)
 
 clean: 
 		$(MAKE) clean -C ./libft
