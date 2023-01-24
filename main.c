@@ -11,7 +11,8 @@ int	main(int argc, char **argv, char **envp)
 }
 
 void    get_user_input(t_info *info)
-{
+{   
+    t_node node;
     char    *input;
     while(1) 
     {
@@ -26,7 +27,7 @@ void    get_user_input(t_info *info)
         handle_forks(info);
         free(input);
     }
-    //Free everything here
+    our_exit(&node, info);
 }
 
 void    print_2d(char **str)

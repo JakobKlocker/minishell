@@ -152,7 +152,6 @@ void	is_firstword_path(t_info *info);
 
 //utils2.c
 void    acess_env(t_info *info, int id);
-void    our_exit(t_node *node, t_info *info);
 
 //Executer
 char    **list_to_2d(t_info *info);
@@ -168,5 +167,9 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in);
 //signal.c
 void    handle_sigint(int sig);
 void  	handle_sigquit(int sig);
-void    init_sigaction(void);
+void  	init_sigaction(void);
+
+//free.c
+void	our_exit(t_node *node, t_info *info);
+
 #endif

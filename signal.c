@@ -31,10 +31,11 @@ void    handle_sigint(int sig)
 
 void  handle_sigquit(int sig)
 {
+  t_node node;
+  t_info info;
   if (sig == SIGQUIT)
   {
     g_status =  130;
-    // write (STDERR_FILENO, "Quit\n", 5);
-    exit(g_status);
+    our_exit(&node, &info);
   }
 }
