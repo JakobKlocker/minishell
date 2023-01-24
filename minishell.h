@@ -148,6 +148,7 @@ char    *get_path_ptr(t_info *info);
 void    get_full_path(t_info *info);
 void    free_split(char **split_paths);
 char    **split_add_cmd(char *path_ptr, t_node *cur);
+void	is_firstword_path(t_info *info);
 
 //utils2.c
 void    acess_env(t_info *info, int id);
@@ -161,6 +162,8 @@ void    executer(t_info *info, t_node *cur);
 void    handle_forks(t_info *info);
 void	add_pipe_fd(t_node *node, t_info *info);
 void    handle_executer(t_info *info, t_node *cur);
+void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in);
+
 
 //signal.c
 void    handle_sigint(int sig);
