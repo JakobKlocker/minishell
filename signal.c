@@ -34,7 +34,6 @@ void  handle_sigquit(int sig)
   if (sig == SIGQUIT)
   {
     g_status =  130;
-    // write (STDERR_FILENO, "Quit\n", 5);
     exit(g_status);
   }
 }
