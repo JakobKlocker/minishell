@@ -4,11 +4,9 @@ int g_status = 0;
 
 int	main(int argc, char **argv, char **envp)
 {
-    (void) argc;
-    (void) argv;
     t_info info;
-    init_sigaction();
     copy_env(&info, envp);
+    init_sigaction();
     get_user_input(&info);
 }
 
@@ -16,17 +14,18 @@ void    get_user_input(t_info *info)
 {   
     t_node node;
     char    *input;
-    int status;
-    input = readline("minishell: ");
-    while(ft_strncmp(input, "exit\0", 5) != 0) 
+    while(1) 
     {
+        input = readline("testshell: ");
+        add_history(input);
         info->cmd_input = first_split(input);
         expander(info->cmd_input, info);
         remove_quotes(info->cmd_input);
         prepare_nodes(info);
         get_full_path(info);
+        is_firstword_path(info);
         handle_forks(info);
-        input = readline("minishell: ");
+        free(input);
     }
     our_exit(&node, info);
 }

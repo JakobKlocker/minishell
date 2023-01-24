@@ -76,3 +76,16 @@ void	get_full_path(t_info *info)
 		cur = cur->next;
 	}
 }
+
+void	is_firstword_path(t_info *info)
+{
+	t_node *cur;
+
+	cur = info->head;
+	while(cur)
+	{
+		if(cur->full_cmd[0][0] == '.' || cur->full_cmd[0][0] == '/')
+			cur->full_path = cur->full_cmd[0];
+		cur = cur->next;
+	}
+}

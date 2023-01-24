@@ -6,42 +6,45 @@
 void	handle_forks(t_info *info)
 {
 	int		pid;
-	int		is_builtin;
 	t_node	*cur;
 	int		cur_in;
 
 	cur = info->head;
 	cur_in = STDIN_FILENO;
+	if (!cur->next)
+	{
+		if(check_builtin(cur, info) == 1)
+			return ;
+	}
+	loop_forks(info, cur, pid, cur_in);
+}
+
+void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in)
+{
 	while (cur)
 	{
 		pipe(info->fd);
-		is_builtin = check_builtin(cur, info);
-		if (is_builtin == 0)
+		pid = fork();
+		if (pid == 0)
 		{
-			pid = fork();
-			if (pid == 0)
-			{
-				dup2(cur_in, 0);
-				if (cur->next)
-					dup2(info->fd[WRITE_END], 1);
-				close(info->fd[READ_END]);
-				check_builtin_fork(cur, info);
-				exit(3);
-			}
-			else
-			{
-				waitpid(pid, NULL, 0);
-				close(info->fd[WRITE_END]);
-				if (cur_in != 0)
-					close(cur_in);
-				cur_in = info->fd[READ_END];
-				cur = cur->next;
-			}
-		
+			dup2(cur_in, 0);
+			if (cur->next)
+				dup2(info->fd[WRITE_END], 1);
+			close(info->fd[READ_END]);
+			check_builtin_fork(cur, info);
+			exit(3);
 		}
-		cur = cur->next;
-		//close(cur_in);
+		else
+		{
+			waitpid(pid, NULL, 0);
+			close(info->fd[WRITE_END]);
+			if (cur_in != 0)
+				close(cur_in);
+			cur_in = info->fd[READ_END];
+			cur = cur->next;
+		}
 	}
+	close(info->fd[READ_END]);
 }
 
 void	handle_executer(t_info *info, t_node *cur)
