@@ -47,6 +47,11 @@ void    replace_env(char **str, int i, char *dol_pos, t_info *info)
 
     our_var_len = get_len_env_var(dol_pos);
     env_pos = get_env_for_var(info, dol_pos, our_var_len);
+    if(dol_pos[0] == '?')
+    {
+        our_var_len = ft_strlen(ft_itoa(g_status));
+        env_pos = ft_itoa(g_status);
+    }
     ret = do_replace(str[i], env_pos, dol_pos - 1, our_var_len);
     free(str[i]);
     str[i] = ret;

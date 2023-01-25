@@ -15,7 +15,9 @@ void    get_user_input(t_info *info)
     char    *input;
     while(1) 
     {
-        input = readline("testshell: ");
+        input = ft_strtrim(readline("testshell: "), " ");
+        if(input[0] == '\0')
+            continue;
         add_history(input);
         info->cmd_input = first_split(input);
         expander(info->cmd_input, info);
