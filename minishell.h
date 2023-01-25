@@ -44,7 +44,11 @@ typedef struct s_info
 	pid_t			pid;
 	char			**cmd_input;
 	int				fd[2];
+	char			*input;
 }					t_info;
+
+#define WRITE_END 1
+#define READ_END 0
 
 //builtins.c
 void	echo(t_node *node);
@@ -172,6 +176,8 @@ void  	init_sigaction(t_info *info);
 
 //free.c
 void	our_exit(t_node *node, t_info *info);
-void    free_list(t_info *info);
+void	free_env(t_info *info);
+void	free_nodes(t_info *info);
+void    call_perror_free(t_info *info);
 
 #endif

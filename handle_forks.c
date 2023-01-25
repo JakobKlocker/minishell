@@ -1,8 +1,5 @@
 #include "minishell.h"
 
-#define WRITE_END 1
-#define READ_END 0
-
 void	handle_forks(t_info *info)
 {
 	int		pid;
@@ -13,7 +10,7 @@ void	handle_forks(t_info *info)
 	cur_in = STDIN_FILENO;
 	if (!cur->next)
 	{
-		if(check_builtin(cur, info) == 1)
+		if (check_builtin(cur, info) == 1)
 			return ;
 	}
 	loop_forks(info, cur, pid, cur_in);
@@ -25,6 +22,8 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in)
 	{
 		pipe(info->fd);
 		pid = fork();
+		if (pid == -1)
+			call_perror_free(info);
 		if (pid == 0)
 		{
 			dup2(cur_in, 0);
@@ -53,11 +52,12 @@ void	handle_executer(t_info *info, t_node *cur)
 
 	if (!cur->full_path)
 	{
-		ft_printf("zsh: command not found: %s\n", cur->full_cmd[0]);
+		ft_printf("%s: command not found\n", cur->full_cmd[0]);
 		return ;
 	}
-	if (cur->heredoc)
-		ft_putstr_fd(cur->heredoc, cur->out);
+	// if (cur->next)
+	// 	if (cur->heredoc)
+	// 		ft_putstr_fd(cur->heredoc, 1);
 	if (fork() == 0)
 	{
 		dup2(cur->in, 0);

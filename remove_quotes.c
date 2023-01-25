@@ -49,7 +49,7 @@ char	*do_remove(char *str)
 
 	replaced = malloc(ft_strlen(str) + 1 - (count_quotes(str) * 2));
 	if (!replaced)
-		return (NULL);
+		exit(1);
 	i = 0;
 	while (*str)
 	{

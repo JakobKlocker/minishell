@@ -13,23 +13,26 @@ int	main(int argc, char **argv, char **envp)
 
 void    get_user_input(t_info *info)
 {   
-    char    *input;
     while(1) 
     {
-        input = ft_strtrim(readline("testshell: "), " ");
+        info->input = ft_strtrim(readline("testshell: "), " ");
         if (input == NULL)
             our_exit(info->head, info);
         if(input[0] == '\0')
+        input = ft_strtrim(readline("testshell: "), " ");
             continue;
-        add_history(input);
-        info->cmd_input = first_split(input);
+        add_history(info->input);
+        info->cmd_input = first_split(info->input);
         expander(info->cmd_input, info);
         remove_quotes(info->cmd_input);
         prepare_nodes(info);
         get_full_path(info);
         is_firstword_path(info);
+        if(!info->head || !info->head->full_cmd || !info->head->full_cmd[0])
+            continue;
         handle_forks(info);
-        free(input);
+        free_nodes(info);
+        free(info->input);
     }
     our_exit(info->head, info);
 }

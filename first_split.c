@@ -60,7 +60,7 @@ static char	**malloc_2d(char *s, char c)
 	i = count_words(s);
 	ret = malloc(((i + 1) * sizeof(char *)));
 	if (ret == NULL)
-		return (NULL);
+		exit(1);
 	j = 0;
 	while (i > j)
 	{
@@ -68,6 +68,8 @@ static char	**malloc_2d(char *s, char c)
 			s++;
 		k = getlen_till_ch(s, c);
 		ret[j] = malloc(k + 1);
+		if(!ret[j])
+			exit(1);
 		s = s + k;
 		j++;
 	}
@@ -82,8 +84,6 @@ static char	**do_split(char *s, int i, int j)
 	int		c;
 
 	ret = malloc_2d(s, ' ');
-	if (!ret)
-		return (NULL);
 	i = count_words(s);
 	j = 0;
 	while (i > j)
@@ -115,6 +115,6 @@ char	**first_split(char *s)
 		return (NULL);
 	ret = do_split(s, i, j);
 	if (!ret)
-		return (NULL);
+		exit(1);
 	return (ret);
 }

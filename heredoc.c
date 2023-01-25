@@ -7,6 +7,8 @@ void    heredoc(t_info *info, int *i, t_node *cur)
     char    *tmp;
 
     heredoc = ft_calloc(1,1);
+    if(!heredoc)
+        call_perror_free(info);
     line = readline("> ");
     while(ft_strcmp(line, info->cmd_input[*i + 1]) != 0)
     {

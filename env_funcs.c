@@ -15,7 +15,7 @@ int    copy_env(t_info *info, char **envp)
 
     head = (t_envlst *)malloc(sizeof(t_envlst));
     if (!head)
-        return (1);
+        call_perror_free(info);
     info->envp = head;
     i = 0;
     while (envp[i])
@@ -27,6 +27,8 @@ int    copy_env(t_info *info, char **envp)
         }
         len = ft_strlen(envp[i]);
         head->var = malloc(len + 1);
+        if(!head->var)
+            call_perror_free(info);
         ft_memcpy(head->var, envp[i], len);
         head->var[len] = '\0';
         i++;
