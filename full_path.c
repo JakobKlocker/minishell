@@ -24,7 +24,7 @@ char    **split_add_cmd(char *path_ptr, t_node *cur)
 
     ret = ft_split(path_ptr, ':');
     i = 0;
-    while(ret && ret[i])
+    while(cur->full_cmd && cur->full_cmd[0] && ret && ret[i])
     {
         tmp = ft_strjoin(ret[i], "/");
         tmp1 = ft_strjoin(tmp, cur->full_cmd[0]);
@@ -84,7 +84,7 @@ void	is_firstword_path(t_info *info)
 	cur = info->head;
 	while(cur)
 	{
-		if(cur->full_cmd[0][0] == '.' || cur->full_cmd[0][0] == '/')
+		if(cur->full_cmd && cur->full_cmd[0] && (cur->full_cmd[0][0] == '.' || cur->full_cmd[0][0] == '/'))
 			cur->full_path = cur->full_cmd[0];
 		cur = cur->next;
 	}

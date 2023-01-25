@@ -41,12 +41,14 @@ void	malloc_nodes(t_info *info)
 
 	tmp = malloc(sizeof(t_node));
 	if (!tmp)
-		return ;
+		call_perror_free(info);
 	info->head = tmp;
 	node_count = get_node_count(info);
 	while (node_count > 0)
 	{
 		tmp->next = malloc(sizeof(t_node));
+		if(!tmp->next)
+			call_perror_free(info);
 		tmp = tmp->next;
 		node_count--;
 	}
@@ -152,6 +154,8 @@ void	malloc_2d_nodes(t_info *info)
 	{
 		words = get_words_for_node(info->cmd_input, i);
 		cur->full_cmd = malloc((words + 1) * sizeof(char *));
+		if(!cur->full_cmd)
+			call_perror_free(info);
 		cur->full_cmd[words] = NULL;
 		while (info->cmd_input[i] && info->cmd_input[i][0] != '|')
 			i++;

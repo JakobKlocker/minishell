@@ -8,6 +8,8 @@ char    **list_to_2d(t_info *info)
 
     cur = info->envp;
     ret = malloc(count_var(info) + 1);
+    if(!ret)
+        call_perror_free(info);
     i = 0;
     while(cur)
     {

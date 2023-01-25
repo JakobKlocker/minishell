@@ -38,6 +38,8 @@ void    ft_lstaddback(t_info *info)
         temp = temp->next;
     }
     temp->next = malloc(sizeof (t_envlst));
+    if(!temp->next)
+        call_perror_free(info);
     temp->next->next = NULL;
 }
 

@@ -8,7 +8,7 @@ char    *reaplce_empty(char *str, char *dol_pos, int our_var_len)
     ptr_dif = (char *)dol_pos - (char *)str;
     ret = malloc(ft_strlen(str) - our_var_len);
     if(ret == NULL)
-        return (NULL);
+        exit(1);
     if(0 < ptr_dif)
         ft_memcpy(ret, str, ptr_dif);
     ft_memcpy(ret + ptr_dif, str + ptr_dif + our_var_len + 1, ft_strlen(str + ptr_dif + our_var_len + 1));
@@ -29,7 +29,7 @@ char    *do_replace(char *str, char *env_pos, char *dol_pos, int our_var_len)
     ptr_dif = (char *)dol_pos - (char *)str;
     ret = malloc(ft_strlen(str) - our_var_len + 1 + ft_strlen(env_pos) + 1);
     if(ret == NULL)
-        return (NULL);
+        exit(1);
     if(0 < ptr_dif)
         ft_memcpy(ret, str, ptr_dif);
     ft_memcpy(ret + ptr_dif, env_pos, ft_strlen(env_pos));
