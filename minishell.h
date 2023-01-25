@@ -180,4 +180,8 @@ void	free_env(t_info *info);
 void	free_nodes(t_info *info);
 void    call_perror_free(t_info *info);
 
+//inc_shlvl.c
+void    inc_shlvl(t_info *info);
+int    get_shlvl(t_info *info);
+
 #endif

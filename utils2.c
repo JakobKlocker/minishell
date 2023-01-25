@@ -30,5 +30,4 @@ void    init_info(t_info *info)
 {
     info->head = NULL;
     info->cmd_input = NULL;
-    info->envp = NULL;
 }   
