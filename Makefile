@@ -21,6 +21,7 @@ SRC = main.c \
 	utils.c \
 	utils2.c \
 	free.c \
+	inc_shlvl.c \
 
 OBJ = $(SRC:.c=.o)
 CC = gcc
