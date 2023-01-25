@@ -78,8 +78,14 @@ void    delete_node(char *str, t_info *info)
 
 void    print_err(int err, char *str)
 {
-    if (err == 2)
-        ft_printf("cd: no such file or directory: %s\n", str);
-    else if (err == 20)
-        ft_printf("cd: not a directory: %s\n", str);
+    if (err == 1)
+    {
+        g_status = errno;
+        ft_putstr_fd("bash: cd: ", 2);
+        ft_putstr_fd(str, 2);
+        write (2, ": ", 2);
+        ft_putstr_fd(strerror(errno), 2);        
+        write (2, "\n", 1);
+    }
+    
 }

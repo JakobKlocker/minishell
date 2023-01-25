@@ -5,6 +5,7 @@ int g_status = 0;
 int	main(int argc, char **argv, char **envp)
 {
     t_info info;
+    init_info(&info);
     copy_env(&info, envp);
     init_sigaction(&info);
     get_user_input(&info);
@@ -16,6 +17,8 @@ void    get_user_input(t_info *info)
     while(1) 
     {
         input = ft_strtrim(readline("testshell: "), " ");
+        if (input == NULL)
+            our_exit(info->head, info);
         if(input[0] == '\0')
             continue;
         add_history(input);

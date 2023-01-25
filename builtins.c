@@ -44,7 +44,6 @@ int	check_builtin(t_node *node, t_info *info)
 	return (1);
 }
 
-//more than 25 lines
 void	echo(t_node *node)
 {
 	int	ind;
@@ -79,15 +78,15 @@ void	cd(t_node *node, t_info *info)
 	i = 0;
 	while (node->full_cmd[i])
 		i++;
-	if (i > 3)
+	if (i > 2)
 	{
-		printf("cd: too many arguments");
-		exit(0);
+		ft_putstr_fd("bash: cd: too many arguments\n", 2);
+		g_status = 1;
 	}
-	if (i > 1)
+	if (i == 2)
 	{
 		if (chdir(node->full_cmd[1]) != 0)
-			print_err(errno, node->full_cmd[1]);
+			print_err(1, node->full_cmd[1]);
 	}
 	else
 		chdir(getenv("HOME"));
@@ -101,6 +100,7 @@ void	pwd(void)
 	buf = getcwd(NULL, 0);
 	ft_putendlfd(buf, 1);
 	free(buf);
+	g_status = 0;
 }
 
 void	env(t_info *info)
@@ -111,4 +111,5 @@ void	env(t_info *info)
 		printf("%s\n", temp->var);
 		temp = temp->next;
 	}
+	g_status = 0;
 }

@@ -2,6 +2,7 @@
 
 void our_exit(t_node *node, t_info *info)
 {
+    ft_printf("exit\n");
     int i;
     t_node *cur;
     t_node *tmp;
