@@ -30,5 +30,11 @@ void    init_info(t_info *info)
 {
     info->head = NULL;
     info->cmd_input = NULL;
-    info->envp = NULL;
-}   
+}
+
+void    insert(t_info *info, char *str)
+{
+    ft_lstaddback(info);
+    ft_lstinsert(info, str);
+    g_status = 0;
+}

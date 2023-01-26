@@ -27,9 +27,10 @@ void    replace_var(t_info *info, char *str)
     while (temp)
     {
         if (ft_strcmpeq(temp->var, str) == 0)
-            temp->var = str;
+            temp->var = ft_strdup(str);
         temp = temp->next;
     }
+    g_status = 0;
 }
 
 int check_for_sc(char *str)
@@ -52,10 +53,10 @@ void print_arg(char *str, int type)
 
     i = 0;
     if (type == 1)
-        ft_printf ("export: not valid in this context: ");
-    else if (type == 2)
-        ft_printf("export: not an identifier: ");
-    while (str[i] != '=' && str[i])
-        write (1, &str[i++], 1);
-    write (1, "\n", 1);
+    {
+        ft_putstr_fd("bash: export: `", 2);
+        ft_printf (str);
+        ft_putstr_fd("': not a valid identifier\n", 2);        
+        g_status = 1;
+    }       
 }

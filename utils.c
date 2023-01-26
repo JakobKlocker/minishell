@@ -6,7 +6,7 @@ int check_if_flag(char *str)
 
     i = 0;
     if(!str)
-        return(0);
+        return(-1);
     if (str[i++] != '-')
         return (-1);
     while (str[i])

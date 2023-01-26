@@ -68,6 +68,7 @@ void	echo(t_node *node)
 	}
 	if (ind == -1)
 		write(node->out, "\n", 1);
+	g_status = 0;
 }
 
 void	cd(t_node *node, t_info *info)
@@ -87,10 +88,16 @@ void	cd(t_node *node, t_info *info)
 	{
 		if (chdir(node->full_cmd[1]) != 0)
 			print_err(1, node->full_cmd[1]);
+		else
+			g_status = 0;
 	}
 	else
+	{
 		chdir(getenv("HOME"));
+		g_status = 0;
+	}
 	acess_env(info, 0);
+
 }
 
 void	pwd(void)

@@ -2,6 +2,7 @@
 
 void	our_exit(t_node *node, t_info *info)
 {
+    ft_printf("exit\n");
     free_env(info);
     free_nodes(info);
     if (info->cmd_input)
