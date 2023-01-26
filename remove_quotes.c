@@ -62,6 +62,8 @@ char	*do_remove(char *str)
 			str = do_remove_util(str, '\'', replaced, &i);
 		}
 		replaced[i] = *str;
+		if(*str == '\0')
+			break;
 		i++;
 		str++;
 	}

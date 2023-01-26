@@ -21,7 +21,7 @@ int	check_builtin_fork(t_node *node, t_info *info)
 		cd(node, info);
 	else
 		handle_executer(info, node);
-	exit(1);
+	exit(g_status);
 	return (1);
 }
 

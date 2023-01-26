@@ -9,6 +9,7 @@ void    export(t_node *node, t_info *info)
         export_var(node, info);
 }
 
+
 void export_var(t_node *node, t_info *info)
 {
     int i = 1;

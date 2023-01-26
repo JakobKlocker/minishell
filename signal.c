@@ -53,6 +53,21 @@ void  init_sigaction(t_info *info)
     sigaction(SIGQUIT, &sig_quit_handler, NULL);
 }
 
+// void  init_sigaction_child(t_info *info)
+// {
+//     struct sigaction  sig_int_handler;
+
+//     sig_int_handler.sa_handler = handle_exit;
+//     sigemptyset(&sig_int_handler.sa_mask);
+//     sig_int_handler.sa_flags = 0;
+//     sigaction(SIGINT, &sig_int_handler, NULL);
+// }
+
+void    handle_exit(int sig)
+{
+    exit(3);
+}
+
 void    handle_sigint(int sig)
 {
     if (sig == SIGINT)
