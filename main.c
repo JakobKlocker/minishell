@@ -13,7 +13,7 @@ int	main(int argc, char **argv, char **envp)
 }
 
 void    get_user_input(t_info *info)
-{   
+{
     while(1) 
     {
         init_info(info);
@@ -28,7 +28,8 @@ void    get_user_input(t_info *info)
         remove_quotes(info->cmd_input);
         prepare_nodes(info);
         get_full_path(info);
-        is_firstword_path(info);
+        if(is_firstword_path(info) == -1)
+            continue;
         if(!info->head || !info->head->full_cmd || !info->head->full_cmd[0])
             continue;
         handle_forks(info);
