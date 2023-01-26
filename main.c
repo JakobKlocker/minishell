@@ -8,7 +8,6 @@ int	main(int argc, char **argv, char **envp)
     init_info(&info);
     copy_env(&info, envp);
     inc_shlvl(&info);
-    init_sigaction(&info);
     get_user_input(&info);
 }
 
@@ -16,6 +15,7 @@ void    get_user_input(t_info *info)
 {
     while(1) 
     {
+        init_sigaction(info);
         init_info(info);
         info->input = ft_strtrim(readline("testshell: "), " ");
         if (info->input == NULL)
@@ -39,34 +39,34 @@ void    get_user_input(t_info *info)
     our_exit(info->head, info);
 }
 
-void    print_2d(char **str)
-{
-    int i;
+// void    print_2d(char **str)
+// {
+//     int i;
 
-    i = 0;
-    while(str[i])
-    {
-        ft_printf("%s\n", str[i]);
-        i++;
-    }
-}
+//     i = 0;
+//     while(str[i])
+//     {
+//         ft_printf("%s\n", str[i]);
+//         i++;
+//     }
+// }
 
-void    print_nodes(t_info *info)
-{
-    int i;
-    t_node *tmp;
+// void    print_nodes(t_info *info)
+// {
+//     int i;
+//     t_node *tmp;
 
-    tmp = info->head;
-    i = 0;
-    while(tmp)
-    {
-        while(tmp->full_cmd[i])
-        {
-            ft_printf("%s ", tmp->full_cmd[i]);
-            i++;
-        }
-        i = 0;
-        ft_printf("\n");
-        tmp = tmp->next;
-    }
-}
+//     tmp = info->head;
+//     i = 0;
+//     while(tmp)
+//     {
+//         while(tmp->full_cmd[i])
+//         {
+//             ft_printf("%s ", tmp->full_cmd[i]);
+//             i++;
+//         }
+//         i = 0;
+//         ft_printf("\n");
+//         tmp = tmp->next;
+//     }
+// }

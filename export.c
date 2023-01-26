@@ -9,7 +9,6 @@ void    export(t_node *node, t_info *info)
         export_var(node, info);
 }
 
-
 //more than 25 lines
 void    export_var(t_node *node, t_info *info)
 {

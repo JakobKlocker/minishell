@@ -31,5 +31,6 @@ void	executer(t_info *info, t_node *cur)
 	i = 0;
 	envp = list_to_2d(info);
 	ft_printf("In executer\n");
+	init_sigaction(info);
 	execve(cur->full_path, cur->full_cmd, envp);
 }

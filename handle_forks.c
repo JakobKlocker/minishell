@@ -21,7 +21,14 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in)
 
 	while (cur)
 	{
+		if (!cur->full_path)
+		{
+			ft_printf("%s: command not found\n", cur->full_cmd[0]);
+			g_status = 127;
+			return ;
+		}
 		pipe(info->fd);
+		init_sigaction(info);
 		pid = fork();
 		if (pid == -1)
 			call_perror_free(info);
@@ -50,12 +57,6 @@ void	handle_executer(t_info *info, t_node *cur)
 {
 	int	pid;
 
-	if (!cur->full_path)
-	{
-		ft_printf("%s: command not found\n", cur->full_cmd[0]);
-		g_status = 127;
-		return ;
-	}
 	dup2(cur->in, 0);
 	dup2(cur->out, 1);
 	executer(info, cur);

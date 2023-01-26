@@ -21,7 +21,7 @@ int	check_builtin_fork(t_node *node, t_info *info)
 		cd(node, info);
 	else
 		handle_executer(info, node);
-	exit(1);
+	exit(g_status);
 	return (1);
 }
 
@@ -69,6 +69,7 @@ void	echo(t_node *node)
 	}
 	if (ind == -1)
 		write(node->out, "\n", 1);
+	g_status = 0;
 }
 
 void	cd(t_node *node, t_info *info)
@@ -90,7 +91,10 @@ void	cd(t_node *node, t_info *info)
 			print_err(1, node->full_cmd[1]);
 	}
 	else
+	{
+		g_status = 0;
 		chdir(getenv("HOME"));
+	}
 	acess_env(info, 0);
 }
 
