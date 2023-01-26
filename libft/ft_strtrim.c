@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:09:40 by jklocker          #+#    #+#             */
-/*   Updated: 2022/10/11 14:07:29 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/25 15:41:07 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static char	*check_dif(void)
 	return (ret);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char *s1, char const *set)
 {
 	char	*first_addr;
 	char	*last_addr;
@@ -108,6 +108,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		i++;
 	}
 	ret[i] = 0;
+	free(s1);
 	return (ret);
 }
 

@@ -34,7 +34,10 @@ char    *do_replace(char *str, char *env_pos, char *dol_pos, int our_var_len)
         ft_memcpy(ret, str, ptr_dif);
     ft_memcpy(ret + ptr_dif, env_pos, ft_strlen(env_pos));
     ft_memcpy(ret + ptr_dif + ft_strlen(env_pos), str + ptr_dif + our_var_len + 1, ft_strlen(str + ptr_dif + our_var_len + 1));
-    ret[ptr_dif + ft_strlen(env_pos) + ft_strlen(str + ptr_dif + our_var_len + 1)] = '\0';
+    if(strcmp(dol_pos, "$?") == 0)
+        ret[our_var_len + ptr_dif] = '\0';
+    else
+        ret[ptr_dif + ft_strlen(env_pos) + ft_strlen(str + ptr_dif + our_var_len + 1)] = '\0';
     return (ret);
 }
 

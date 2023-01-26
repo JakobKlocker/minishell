@@ -77,7 +77,7 @@ void	get_full_path(t_info *info)
 	}
 }
 
-void	is_firstword_path(t_info *info)
+int	is_firstword_path(t_info *info)
 {
 	t_node *cur;
 
@@ -85,7 +85,14 @@ void	is_firstword_path(t_info *info)
 	while(cur)
 	{
 		if(cur->full_cmd && cur->full_cmd[0] && (cur->full_cmd[0][0] == '.' || cur->full_cmd[0][0] == '/'))
+		{
 			cur->full_path = cur->full_cmd[0];
+			if(access(cur->full_path, X_OK) != 0)
+			{
+				ft_printf("bash: %s: No such file or directory\n", cur->full_path);
+				return (-1);
+			}
+		}
 		cur = cur->next;
 	}
 }

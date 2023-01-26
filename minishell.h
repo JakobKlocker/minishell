@@ -152,7 +152,7 @@ char    *get_path_ptr(t_info *info);
 void    get_full_path(t_info *info);
 void    free_split(char **split_paths);
 char    **split_add_cmd(char *path_ptr, t_node *cur);
-void	is_firstword_path(t_info *info);
+int		is_firstword_path(t_info *info);
 
 //utils2.c
 void    acess_env(t_info *info, int id);
@@ -181,6 +181,8 @@ void	free_env(t_info *info);
 void	free_nodes(t_info *info);
 void    call_perror_free(t_info *info);
 
-
+//inc_shlvl.c
+void    inc_shlvl(t_info *info);
+int    get_shlvl(t_info *info);
 
 #endif
