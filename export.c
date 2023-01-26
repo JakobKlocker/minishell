@@ -11,7 +11,9 @@ void    export(t_node *node, t_info *info)
 
 void export_var(t_node *node, t_info *info)
 {
-    int i = 1;
+    int i;
+
+    i = 1;
     while (node->full_cmd[i])
     {
         if (check_for_sc(node->full_cmd[i]) == 1 && check_exist(info, node->full_cmd[i]) == 1)
@@ -22,7 +24,6 @@ void export_var(t_node *node, t_info *info)
                 if ((arg_c(node) > 2 && ft_isdigit(node->full_cmd[i + 1][0]) == 1) || ft_isdigit(node->full_cmd[i][0] == 1))
                     print_arg(node->full_cmd[i + 1], 1);
                 insert(info, node->full_cmd[i]);
-                i++;
             }
             else
                 print_arg(node->full_cmd[i], 1);
