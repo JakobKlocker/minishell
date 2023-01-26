@@ -157,6 +157,7 @@ int		is_firstword_path(t_info *info);
 //utils2.c
 void    acess_env(t_info *info, int id);
 void    init_info(t_info *info);
+void    insert(t_info *info, char *str);
 
 //Executer
 char    **list_to_2d(t_info *info);
