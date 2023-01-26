@@ -47,7 +47,10 @@ void	free_nodes(t_info *info)
 			free(cur->full_cmd);
 		}
 		if (cur->heredoc)
+		{
+			unlink(cur->heredoc);
 			free(cur->heredoc);
+		}
 		i = 0;
 		tmp = cur;
 		cur = cur->next;
