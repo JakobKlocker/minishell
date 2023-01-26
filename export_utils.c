@@ -48,7 +48,7 @@ void    ft_lstinsert(t_info *info, char *str)
     t_envlst *temp = info->envp;
     while (temp->next->next)
         temp = temp->next;
-    temp->var = str;
+    temp->var = ft_strdup(str);
 }
 
 int check_exist(t_info *info, char *str)

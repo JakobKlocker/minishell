@@ -20,11 +20,18 @@ void unset(t_node *node, t_info *info)
     while (node->full_cmd[i])
     {
         if (check_exist(info, node->full_cmd[i]) == 0)
-                delete_node(node->full_cmd[i], info);
+        {
+            delete_node(node->full_cmd[i], info);
+            g_status = 0;
+        }
         else if(check_for_sc(node->full_cmd[i]) == 0)
-            ft_printf("unset: %s: invalid parameter name\n", node->full_cmd[i]);
+        {
+            ft_printf("bash: unset: `%s: not a valid identifier\n", node->full_cmd[i]);
+            g_status = 1;
+        }
         i++;
     }
+    g_status = 0;
 }
 
 int check_var(t_node *node)
@@ -86,6 +93,7 @@ void    print_err(int err, char *str)
         write (2, ": ", 2);
         ft_putstr_fd(strerror(errno), 2);        
         write (2, "\n", 1);
+        g_status = 1;
     }
     
 }

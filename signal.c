@@ -47,11 +47,9 @@ void  init_sigaction(t_info *info)
     sigemptyset(&sig_int_handler.sa_mask);
     sig_int_handler.sa_flags = 0;
     sigaction(SIGINT, &sig_int_handler, NULL);
-    sig_quit_handler.sa_sigaction = handle_sigquit;
+    sig_quit_handler.sa_handler = handle_sigquit;
     sigemptyset(&sig_quit_handler.sa_mask);
-    sig_quit_handler.sa_flags = SA_SIGINFO;
-    sig_quit_handler.sa_flags |= SA_RESTART;
-    sig_quit_handler.sa_sigaction = (void *)info;
+    sig_quit_handler.sa_flags = 0;
     sigaction(SIGQUIT, &sig_quit_handler, NULL);
 }
 
@@ -68,14 +66,12 @@ void    handle_sigint(int sig)
     }
 }
 
-void  handle_sigquit(int sig, siginfo_t *info, void *ptr)
+void  handle_sigquit(int sig)
 {
-    t_info *data_ptr = (t_info *)ptr;
     ft_printf("Hello");
     if (sig == SIGQUIT)
     {
+        ft_putstr_fd("Quit\n", 2);
         g_status =  130;
-        exit(0);
-        // our_exit(data_ptr->head, data_ptr);
     }
 }
