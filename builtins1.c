@@ -27,7 +27,7 @@ void	unset(t_node *node, t_info *info)
 		else if (check_for_sc(node->full_cmd[i]) == 0)
 		{
 			ft_printf("bash: unset: `%s: not a valid identifier\n",
-					node->full_cmd[i]);
+				node->full_cmd[i]);
 			g_status = 1;
 		}
 		i++;

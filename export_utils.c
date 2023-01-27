@@ -57,7 +57,7 @@ void	ft_lstinsert(t_info *info, char *str)
 
 int	check_exist(t_info *info, char *str)
 {
-	t_envlst *temp;
+	t_envlst	*temp;
 
 	temp = info->envp;
 	while (temp)
