@@ -1,6 +1,9 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+#define CYELLOW "\001\e\033[35m\002"
+#define RESET   "\001\e[0m\002"
+
 # include "libft/ft_printf.h"
 # include "libft/libft.h"
 # include <dirent.h>
@@ -173,9 +176,10 @@ void				loop_forks(t_info *info, t_node *cur, int pid, int cur_in);
 //signal.c
 void				handle_sigint(int sig);
 void				handle_sigquit(int sig);
-void				init_sigaction(t_info *info);
-void				init_sigaction_child(t_info *info);
-void				handle_exit(int sig);
+void				handle_signals(int type);
+void				handle_sigintfork(int sig);
+void				handle_sigquitfork(int sig);
+
 
 //free.c
 void				our_exit(t_node *node, t_info *info);

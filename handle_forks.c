@@ -29,7 +29,7 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in)
 	while (cur)
 	{
 		pipe(info->fd);
-		init_sigaction(info);
+		handle_signals(2);
 		pid = fork();
 		if (pid == -1)
 			call_perror_free(info);
