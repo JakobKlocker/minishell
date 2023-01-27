@@ -52,7 +52,7 @@ int	check_equality(char *str1, char *str2)
 
 int	arg_c(t_node *node)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (node->full_cmd[i])

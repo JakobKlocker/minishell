@@ -13,7 +13,7 @@ int	ft_strcmpeq(char *str1, char *str2)
 			return (str1[i] - str2[i]);
 		i++;
 	}
-	if (str1[i] == '=' || str2[i] == '=')
+	if (str1[i] == '=' && str2[i] == '=')
 		return (0);
 	else
 		return (str1[i] - str2[i]);
@@ -38,6 +38,8 @@ int	check_for_sc(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (1);
 	while (str[i] && str[i] != '=')
 	{
 		if (ft_isalnum(str[i]) == 0)
@@ -59,4 +61,20 @@ void	print_arg(char *str, int type)
 		ft_putstr_fd("': not a valid identifier\n", 2);
 		g_status = 1;
 	}
+}
+
+void str_is_this(char *str1, t_info *info, t_node *node, char *str2)
+{
+	if (check_for_appereance(str1, '=') == 0
+				&& ft_isalpha(str1[0]) == 1 &&
+				!(str1[0] == '=')
+					&& !(ft_strlen(str1) == 1))
+			{
+				if ((arg_c(node) > 2 && ft_isdigit(str2[0]) == 1)
+					|| ft_isdigit(str1[0] == 1))
+					print_arg(str2, 1);
+				insert(info, str1);
+			}
+			else
+				print_arg(str1, 1);
 }
