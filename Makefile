@@ -16,12 +16,15 @@ SRC = main.c \
 	handle_forks.c \
 	heredoc.c \
 	prepare_nodes.c \
+	prepare_nodes_1.c \
+	prepare_nodes_2.c \
 	remove_quotes.c \
 	signal.c \
 	utils.c \
 	utils2.c \
 	free.c \
 	inc_shlvl.c \
+	builtins_fork.c \
 
 OBJ = $(SRC:.c=.o)
 CC = gcc

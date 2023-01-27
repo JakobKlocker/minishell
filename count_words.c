@@ -37,22 +37,24 @@ char	*is_in_quotes(char *str, int *count)
 	return (str);
 }
 
-static char *is_word(char *str, int *count)
+static char	*is_word(char *str, int *count)
 {
-	if(*str != ' ' && *str != '\n' && *str != '|' && *str != '<' && *str != '>' && *str)
+	if (*str != ' ' && *str != '\n' && *str != '|' && *str != '<' && *str != '>'
+		&& *str)
 	{
-		while((*str != ' ' && *str != '\n' && *str != '|' && *str != '<' && *str != '>' && *str))
+		while ((*str != ' ' && *str != '\n' && *str != '|' && *str != '<'
+				&& *str != '>' && *str))
 		{
-			if(*str == '\'' && ft_strchr(str + 1, '"'))
+			if (*str == '\'' && ft_strchr(str + 1, '"'))
 			{
 				str++;
-				while(*str != '"')
+				while (*str != '"')
 					str++;
 			}
-			if(*str == '\'' && ft_strchr(str + 1, '\''))
+			if (*str == '\'' && ft_strchr(str + 1, '\''))
 			{
 				str++;
-				while(*str != '\'')
+				while (*str != '\'')
 					str++;
 			}
 			str++;
@@ -69,7 +71,7 @@ int	count_words(char *str)
 
 	cpy = str;
 	count = 0;
- 	while (*str && *str != '\n')
+	while (*str && *str != '\n')
 	{
 		while (*str == ' ' || *str == '\n')
 			str++;

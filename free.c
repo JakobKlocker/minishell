@@ -2,12 +2,11 @@
 
 void	our_exit(t_node *node, t_info *info)
 {
-    ft_printf("exit\n");
-    free_env(info);
-    free_nodes(info);
-    if (info->cmd_input)
+	ft_printf("exit\n");
+	free_env(info);
+	free_nodes(info);
+	if (info->cmd_input)
 		free(info->cmd_input);
-
 	exit(g_status);
 }
 
@@ -37,9 +36,16 @@ void	free_nodes(t_info *info)
 
 	cur = info->head;
 	i = 0;
+	free_nodes_1(info, cur, tmp, i);
+	info->head = NULL;
+}
+
+void	free_nodes_1(t_info *info, t_node *cur, t_node *tmp, int i)
+{
 	while (cur)
 	{
-		if (cur->full_path && cur->full_cmd[0][0] != '.' && cur->full_cmd[0][0] != '/')
+		if (cur->full_path && cur->full_cmd[0][0] != '.'
+			&& cur->full_cmd[0][0] != '/')
 			free(cur->full_path);
 		if (cur->full_cmd != NULL)
 		{
@@ -57,7 +63,6 @@ void	free_nodes(t_info *info)
 		cur = cur->next;
 		free(tmp);
 	}
-	info->head = NULL;
 }
 
 void	call_perror_free(t_info *info)
