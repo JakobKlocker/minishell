@@ -1,8 +1,8 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
-#define CYELLOW "\001\e\033[35m\002"
-#define RESET   "\001\e[0m\002"
+# define CYELLOW "\001\e\033[35m\002"
+# define RESET "\001\e[0m\002"
 
 # include "libft/ft_printf.h"
 # include "libft/libft.h"
@@ -130,7 +130,8 @@ int					ft_strcmpeq(char *str1, char *str2);
 void				replace_var(t_info *info, char *str);
 int					check_for_sc(char *str);
 void				print_arg(char *str, int type);
-void				str_is_this(char *str1, t_info *info, t_node *node, char *str2);
+void				str_is_this(char *str1, t_info *info, t_node *node,
+						char *str2);
 
 //prepare_nodes.c
 int					get_node_count(t_info *info);
@@ -180,7 +181,6 @@ void				handle_sigquit(int sig);
 void				handle_signals(int type);
 void				handle_sigintfork(int sig);
 void				handle_sigquitfork(int sig);
-
 
 //free.c
 void				our_exit(t_node *node, t_info *info);
