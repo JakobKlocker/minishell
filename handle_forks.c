@@ -20,7 +20,7 @@ void	handle_forks(t_info *info)
 		return ;
 	}
 	loop_forks(info, cur, pid, cur_in);
-	if(g_status == 256)
+	if (g_status == 256)
 		g_status = 127;
 }
 
@@ -41,13 +41,15 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in)
 			close(info->fd[READ_END]);
 			check_builtin_fork(cur, info);
 		}
-		wait(&g_status);
 		close(info->fd[WRITE_END]);
 		if (cur_in != 0)
 			close(cur_in);
 		cur_in = info->fd[READ_END];
 		cur = cur->next;
 	}
+	pid = -1;
+	while (pid++ < get_node_count(info))
+		wait(&g_status);
 	close(info->fd[READ_END]);
 }
 
