@@ -25,6 +25,12 @@ static int	getlen_till_ch(char *s, char c)
 	int	i;
 
 	i = 0;
+	i = getlen_till_ch_1(s, c, i);
+	return (i);
+}
+
+static int	getlen_till_ch_1(char *s, char c, int i)
+{
 	while (s[i])
 	{
 		if (s[i] == '"' && ft_strchr((s + 1), '"'))
@@ -39,11 +45,13 @@ static int	getlen_till_ch(char *s, char c)
 				i++;
 			i = i + 2;
 		}
-		if (((s[i] == '<' && s[i + 1] == '<') || (s[i] == '>' && s[i + 1] == '>')) && i == 0)
+		if (((s[i] == '<' && s[i + 1] == '<') || (s[i] == '>' && s[i
+						+ 1] == '>')) && i == 0)
 			return (2);
 		if ((s[i] == '<' || s[i] == '>' || s[i] == '|') && i == 0)
 			return (1);
-		if (s[i] == c || s[i] == '\0' || s[i] == '\n' || s[i] == '|' || s[i] == '<' || s[i] == '>')
+		if (s[i] == c || s[i] == '\0' || s[i] == '\n' || s[i] == '|'
+			|| s[i] == '<' || s[i] == '>')
 			return (i);
 		i++;
 	}
@@ -68,7 +76,7 @@ static char	**malloc_2d(char *s, char c)
 			s++;
 		k = getlen_till_ch(s, c);
 		ret[j] = malloc(k + 1);
-		if(!ret[j])
+		if (!ret[j])
 			exit(1);
 		s = s + k;
 		j++;

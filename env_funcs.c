@@ -7,32 +7,32 @@
 //         exit (0);
 // }
 
-int    copy_env(t_info *info, char **envp)
+int	copy_env(t_info *info, char **envp)
 {
-    int i;
-    int len;
-    t_envlst * head;
+	int			i;
+	int			len;
+	t_envlst	*head;
 
-    head = (t_envlst *)malloc(sizeof(t_envlst));
-    if (!head)
-        call_perror_free(info);
-    info->envp = head;
-    i = 0;
-    while (envp[i])
-    {
-        if(i != 0)
-        {
-            head->next = (t_envlst *)malloc(sizeof(t_envlst));
-            head = head->next;
-        }
-        len = ft_strlen(envp[i]);
-        head->var = malloc(len + 1);
-        if(!head->var)
-            call_perror_free(info);
-        ft_memcpy(head->var, envp[i], len);
-        head->var[len] = '\0';
-        i++;
-    }
-    head->next = NULL;
-    return (0);
+	head = (t_envlst *)malloc(sizeof(t_envlst));
+	if (!head)
+		call_perror_free(info);
+	info->envp = head;
+	i = 0;
+	while (envp[i])
+	{
+		if (i != 0)
+		{
+			head->next = (t_envlst *)malloc(sizeof(t_envlst));
+			head = head->next;
+		}
+		len = ft_strlen(envp[i]);
+		head->var = malloc(len + 1);
+		if (!head->var)
+			call_perror_free(info);
+		ft_memcpy(head->var, envp[i], len);
+		head->var[len] = '\0';
+		i++;
+	}
+	head->next = NULL;
+	return (0);
 }

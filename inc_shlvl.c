@@ -9,7 +9,7 @@ void	inc_shlvl(t_info *info)
 	lvl = get_shlvl(info);
 	if (lvl == -1)
 		return ;
-    lvl++;
+	lvl++;
 	new_str = malloc(ft_strlen(ft_itoa(lvl)) + 7);
 	if (!new_str)
 		exit(1);
@@ -29,7 +29,7 @@ void	inc_shlvl(t_info *info)
 
 int	get_shlvl(t_info *info)
 {
-	t_envlst *cur;
+	t_envlst	*cur;
 
 	cur = info->envp;
 	while (cur)

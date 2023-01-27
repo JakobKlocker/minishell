@@ -1,42 +1,40 @@
 #include "minishell.h"
 
-void    acess_env(t_info *info, int id)
+void	acess_env(t_info *info, int id)
 {
-    char *buf;
-    t_envlst *temp;
+	char		*buf;
+	t_envlst	*temp;
 
-    temp = info->envp;
-    while (temp->next && id == 1)
-    {
-        if (ft_strncmp(temp->var, "OLDPWD", 6) == 0)
-        {
-            buf = getcwd(NULL, 0);
-            temp->var = ft_strjoin("OLDPWD=", buf);
-        }
-        temp = temp->next;
-    }
-    while (temp->next && id == 0)
-    {
-        if (ft_strncmp(temp->var, "PWD", 3) == 0)
-        {
-            buf = getcwd(NULL, 0);
-            temp->var = ft_strjoin("PWD=", buf);
-        }
-        temp = temp->next;
-    }
+	temp = info->envp;
+	while (temp->next && id == 1)
+	{
+		if (ft_strncmp(temp->var, "OLDPWD", 6) == 0)
+		{
+			buf = getcwd(NULL, 0);
+			temp->var = ft_strjoin("OLDPWD=", buf);
+		}
+		temp = temp->next;
+	}
+	while (temp->next && id == 0)
+	{
+		if (ft_strncmp(temp->var, "PWD", 3) == 0)
+		{
+			buf = getcwd(NULL, 0);
+			temp->var = ft_strjoin("PWD=", buf);
+		}
+		temp = temp->next;
+	}
 }
 
-void    init_info(t_info *info)
+void	init_info(t_info *info)
 {
-    info->head = NULL;
-    info->cmd_input = NULL;
-
+	info->head = NULL;
+	info->cmd_input = NULL;
 }
 
-void    insert(t_info *info, char *str)
+void	insert(t_info *info, char *str)
 {
-    ft_lstaddback(info);
-    ft_lstinsert(info, str);
-    g_status = 0;
+	ft_lstaddback(info);
+	ft_lstinsert(info, str);
+	g_status = 0;
 }
-
