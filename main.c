@@ -10,7 +10,6 @@ int	main(int argc, char **argv, char **envp)
 	copy_env(&info, envp);
 	inc_shlvl(&info);
 	get_user_input(&info);
-	init_sigaction(&info);
 }
 
 void	get_user_input(t_info *info)
@@ -18,7 +17,8 @@ void	get_user_input(t_info *info)
 	while (1)
 	{
 		init_info(info);
-		info->input = ft_strtrim(readline("testshell: "), " ");
+		handle_signals(1);
+		info->input = ft_strtrim(readline(CYELLOW "minishell: " RESET), " ");
 		if (info->input == NULL)
 			our_exit(info->head, info);
 		if (info->input[0] == '\0')
