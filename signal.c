@@ -30,11 +30,7 @@ void	handle_sigint(int sig)
 void	handle_sigquit(int sig)
 {
 	if (sig == SIGQUIT)
-	{
-		ft_putstr_fd("Quit (core dumped)\n", 2);
-		write (2, " ", 1);
-		g_status = 130;
-	}
+		write (2, "\b\b  \b\b", 6);
 }
 
 void	handle_sigintfork(int sig)
