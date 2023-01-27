@@ -17,7 +17,9 @@ void	export_var(t_node *node, t_info *info)
 	{
 		if (check_for_sc(node->full_cmd[i]) == 1 && check_exist(info,
 				node->full_cmd[i]) == 1)
-			str_is_this(node->full_cmd[i], info, node, node->full_cmd[i + 1]);
+			if (str_is_this(node->full_cmd[i], info, node,
+					node->full_cmd[i + 1]) == 0)
+				i++;
 		else if (check_for_sc(node->full_cmd[i]) == 1)
 		{
 			if (check_for_appereance(node->full_cmd[i], '=') == 0

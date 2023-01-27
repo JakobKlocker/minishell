@@ -130,7 +130,7 @@ int					ft_strcmpeq(char *str1, char *str2);
 void				replace_var(t_info *info, char *str);
 int					check_for_sc(char *str);
 void				print_arg(char *str, int type);
-void				str_is_this(char *str1, t_info *info, t_node *node,
+int					str_is_this(char *str1, t_info *info, t_node *node,
 						char *str2);
 
 //prepare_nodes.c
