@@ -63,18 +63,16 @@ void	print_arg(char *str, int type)
 	}
 }
 
-void str_is_this(char *str1, t_info *info, t_node *node, char *str2)
+void	str_is_this(char *str1, t_info *info, t_node *node, char *str2)
 {
-	if (check_for_appereance(str1, '=') == 0
-				&& ft_isalpha(str1[0]) == 1 &&
-				!(str1[0] == '=')
-					&& !(ft_strlen(str1) == 1))
-			{
-				if ((arg_c(node) > 2 && ft_isdigit(str2[0]) == 1)
-					|| ft_isdigit(str1[0] == 1))
-					print_arg(str2, 1);
-				insert(info, str1);
-			}
-			else
-				print_arg(str1, 1);
+	if (check_for_appereance(str1, '=') == 0 && ft_isalpha(str1[0]) == 1
+		&& !(str1[0] == '=') && !(ft_strlen(str1) == 1))
+	{
+		if ((arg_c(node) > 2 && ft_isdigit(str2[0]) == 1)
+			|| ft_isdigit(str1[0] == 1))
+			print_arg(str2, 1);
+		insert(info, str1);
+	}
+	else
+		print_arg(str1, 1);
 }
