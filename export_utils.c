@@ -50,7 +50,7 @@ void	ft_lstinsert(t_info *info, char *str)
 	t_envlst	*temp;
 
 	temp = info->envp;
-	while (temp->next->next)
+	while (temp->next)
 		temp = temp->next;
 	temp->var = ft_strdup(str);
 }
