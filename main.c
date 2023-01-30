@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 14:12:09 by jklocker          #+#    #+#             */
+/*   Updated: 2023/01/30 15:59:54 by jklocker         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int		g_status = 0;
@@ -16,11 +28,14 @@ int	main(int argc, char **argv, char **envp)
 
 void	get_user_input(t_info *info)
 {
+	char	*asd;
+
 	while (1)
 	{
 		init_info(info);
 		handle_signals(1);
-		info->input = ft_strtrim(readline(CYELLOW "minishell: " RESET), " ");
+		asd = readline(CYELLOW "minishell: " RESET);
+		info->input = ft_strtrim(asd, " ");
 		if (info->input == NULL)
 			our_exit(info);
 		if (info->input[0] == '\0')

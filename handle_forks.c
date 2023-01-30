@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_forks.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 14:12:01 by jklocker          #+#    #+#             */
+/*   Updated: 2023/01/30 15:57:51 by jklocker         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	handle_forks(t_info *info)
@@ -58,30 +70,31 @@ void	handle_executer(t_info *info, t_node *cur)
 
 void	node_check_path(t_node *cur)
 {
-	if (!cur->full_path)
+	if (!cur->full_path && is_builtin(cur) == 0)
 	{
 		ft_printf("%s: command not found\n", cur->full_cmd[0]);
 		g_status = 127;
 	}
 }
 
-// void	add_pipe_fd(t_node *node, t_info *info)
-// {
-// 	int i;
+int	is_builtin(t_node *node)
+{
+	int	i;
 
-// 	i = 0;
-// 	t_node *cur;
-
-// 	cur = node->next;
-// 	if (!cur)
-// 		return ;
-// 	while (cur->in[i] != -1 && cur->in[i] != 0)
-// 		i++;
-// 	if (cur->in[i] != 0)
-// 		cur->in[i] = 0;
-// 	i = 0;
-// 	while (cur->out[i] != -1 && cur->out[i] != 1)
-// 		i++;
-// 	if (cur->out[i] != 1)
-// 		cur->out[i] = 1;
-// }
+	i = ft_strlen(node->full_cmd[0]);
+	if (ft_strcmp(node->full_cmd[0], "echo") == 0 && i == 4)
+		return (1);
+	else if (ft_strcmp(node->full_cmd[0], "pwd") == 0 && i == 3)
+		return (1);
+	else if (ft_strcmp(node->full_cmd[0], "env") == 0 && i == 3)
+		return (1);
+	else if (ft_strcmp(node->full_cmd[0], "export") == 0 && i == 6)
+		return (1);
+	else if (ft_strcmp(node->full_cmd[0], "unset") == 0 && i == 5)
+		return (1);
+	else if (ft_strcmp(node->full_cmd[0], "exit") == 0 && i == 4)
+		return (1);
+	else if (ft_strcmp(node->full_cmd[0], "cd") == 0 && i == 2)
+		return (1);
+	return (0);
+}

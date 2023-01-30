@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   export.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 14:11:50 by jklocker          #+#    #+#             */
+/*   Updated: 2023/01/30 14:11:50 by jklocker         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	export(t_node *node, t_info *info)
@@ -82,7 +94,7 @@ void	print_env(char **envp)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (envp[i])
 	{
 		printf("declare -x %s\n", envp[i]);

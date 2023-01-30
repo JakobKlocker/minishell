@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 14:13:01 by jklocker          #+#    #+#             */
+/*   Updated: 2023/01/30 14:13:17 by jklocker         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -175,10 +187,10 @@ void				executer(t_info *info, t_node *cur);
 
 //handle_forks.c
 void				handle_forks(t_info *info);
-void				add_pipe_fd(t_node *node, t_info *info);
 void				handle_executer(t_info *info, t_node *cur);
 void				loop_forks(t_info *info, t_node *cur, int pid, int cur_in);
 void				node_check_path(t_node *cur);
+int					is_builtin(t_node *node);
 
 //signal.c
 void				handle_sigint(int sig);

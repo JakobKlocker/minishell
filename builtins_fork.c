@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   builtins_fork.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 14:11:10 by jklocker          #+#    #+#             */
+/*   Updated: 2023/01/30 16:02:57 by jklocker         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 int	check_builtin_fork(t_node *node, t_info *info)
@@ -21,6 +33,9 @@ int	check_builtin_fork(t_node *node, t_info *info)
 		cd(node, info);
 	else
 		handle_executer(info, node);
+	free_env(info);
+	free_nodes(info);
+	free(info->input);
 	exit(g_status);
 	return (1);
 }
