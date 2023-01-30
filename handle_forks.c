@@ -13,14 +13,8 @@ void	handle_forks(t_info *info)
 		if (check_builtin(cur, info) == 1)
 			return ;
 	}
-	if (!cur->full_path)
-	{
-		ft_printf("%s: command not found\n", cur->full_cmd[0]);
-		g_status = 127;
-		return ;
-	}
 	loop_forks(info, cur, pid, cur_in);
-	if (g_status == 256)
+	if (g_status != 0 && g_status != 1 && g_status != 2)
 		g_status = 127;
 }
 
@@ -30,6 +24,7 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in)
 	{
 		pipe(info->fd);
 		handle_signals(2);
+		node_check_path(cur);
 		pid = fork();
 		if (pid == -1)
 			call_perror_free(info);
@@ -60,6 +55,15 @@ void	handle_executer(t_info *info, t_node *cur)
 	dup2(cur->in, 0);
 	dup2(cur->out, 1);
 	executer(info, cur);
+}
+
+void	node_check_path(t_node *cur)
+{
+	if (!cur->full_path)
+	{
+		ft_printf("%s: command not found\n", cur->full_cmd[0]);
+		g_status = 127;
+	}
 }
 
 // void	add_pipe_fd(t_node *node, t_info *info)

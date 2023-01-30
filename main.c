@@ -42,35 +42,3 @@ void	create_node(t_info *info)
 	prepare_nodes(info);
 	get_full_path(info);
 }
-
-// void    print_2d(char **str)
-// {
-//     int i;
-
-//     i = 0;
-//     while(str[i])
-//     {
-//         ft_printf("%s\n", str[i]);
-//         i++;
-//     }
-// }
-
-// void    print_nodes(t_info *info)
-// {
-//     int i;
-//     t_node *tmp;
-
-//     tmp = info->head;
-//     i = 0;
-//     while(tmp)
-//     {
-//         while(tmp->full_cmd[i])
-//         {
-//             ft_printf("%s ", tmp->full_cmd[i]);
-//             i++;
-//         }
-//         i = 0;
-//         ft_printf("\n");
-//         tmp = tmp->next;
-//     }
-// }
