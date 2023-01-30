@@ -18,6 +18,14 @@ int	copy_env(t_info *info, char **envp)
 		call_perror_free(info);
 	info->envp = head;
 	i = 0;
+	copy_env_1(info, envp, i, head);
+	return (0);
+}
+
+void	copy_env_1(t_info *info, char **envp, int i, t_envlst *head)
+{
+	int			len;
+
 	while (envp[i])
 	{
 		if (i != 0)
@@ -34,5 +42,4 @@ int	copy_env(t_info *info, char **envp)
 		i++;
 	}
 	head->next = NULL;
-	return (0);
 }
