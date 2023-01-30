@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:12:09 by jklocker          #+#    #+#             */
-/*   Updated: 2023/01/30 15:59:54 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:41:13 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	get_user_input(t_info *info)
 			&& is_firstword_path(info) == 0)
 			handle_forks(info);
 		free_nodes(info);
+		free(info->cmd_input);
 		free(info->input);
 	}
 	our_exit(info);
@@ -58,4 +59,26 @@ void	create_node(t_info *info)
 	remove_quotes(info->cmd_input);
 	prepare_nodes(info);
 	get_full_path(info);
+}
+
+void	free_special_chars(t_info *info)
+{
+	int	i;
+
+	i = 0;
+	while (info->cmd_input && info->cmd_input[i])
+	{
+		if (info->cmd_input[i][0] == '|')
+			free(info->cmd_input[i]);
+		else if (info->cmd_input[i][0] == '>' || info->cmd_input[i][0] == '<')
+		{
+			free(info->cmd_input[i]);
+			if (info->cmd_input[i + 1])
+			{
+				free(info->cmd_input[i + 1]);
+				i++;
+			}
+		}
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:11:55 by jklocker          #+#    #+#             */
-/*   Updated: 2023/01/30 15:44:52 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:11:30 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,27 +49,8 @@ void	free_nodes(t_info *info)
 	tmp = NULL;
 	cur = info->head;
 	i = 0;
-	while (cur)
-	{
-		if (cur->full_path && cur->full_cmd[0] && cur->full_cmd[0][0] != '.'
-			&& cur->full_cmd[0][0] != '/')
-			free(cur->full_path);
-		if (cur->full_cmd != NULL)
-		{
-			while (cur->full_cmd[i])
-				free(cur->full_cmd[i++]);
-			free(cur->full_cmd);
-		}
-		if (cur->heredoc)
-		{
-			unlink(cur->heredoc);
-			free(cur->heredoc);
-		}
-		i = 0;
-		tmp = cur;
-		cur = cur->next;
-		free(tmp);
-	}
+	free_special_chars(info);
+	free_nodes_1(cur, tmp, i);
 	info->head = NULL;
 }
 
