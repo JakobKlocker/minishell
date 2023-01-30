@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:12:06 by jklocker          #+#    #+#             */
-/*   Updated: 2023/01/30 15:13:31 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:16:09 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	inc_shlvl(t_info *info)
 	if (lvl == -1)
 		return ;
 	lvl++;
-	tmp	= ft_itoa(lvl);
+	tmp = ft_itoa(lvl);
 	new_str = ft_strjoin("SHLVL=", tmp);
 	free(tmp);
 	cur = info->envp;

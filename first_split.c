@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:11:52 by jklocker          #+#    #+#             */
-/*   Updated: 2023/01/30 14:11:53 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:11:56 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,13 @@ static char	**malloc_2d(char *s, char c)
 		while (*s == ' ')
 			s++;
 		k = getlen_till_ch(s, c);
-		ret[j] = malloc(k + 1);
+		ret[j] = ft_calloc(k + 1, 1);
 		if (!ret[j])
 			exit(1);
 		s = s + k;
 		j++;
 	}
-	ret[j] = 0;
+	ret[j] = NULL;
 	return (ret);
 }
 

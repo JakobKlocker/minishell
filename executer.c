@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:11:31 by jklocker          #+#    #+#             */
-/*   Updated: 2023/01/30 15:15:21 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:16:29 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	executer(t_info *info, t_node *cur)
 {
 	char	**envp;
 
+	if (!cur->full_path)
+		return ;
 	envp = list_to_2d(info);
 	execve(cur->full_path, cur->full_cmd, envp);
 }

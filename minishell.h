@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:13:01 by jklocker          #+#    #+#             */
-/*   Updated: 2023/01/30 14:13:17 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:12:19 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ char				*get_env_for_var(t_info *info, char *dol_pos, int len);
 //main
 void				create_node(t_info *info);
 void				get_user_input(t_info *info);
+void				free_cmd_input(t_info *info);
+void				free_special_chars(t_info *info);
 
 //count words
 char				*is_in_quotes(char *str, int *count);

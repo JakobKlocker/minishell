@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:11:10 by jklocker          #+#    #+#             */
-/*   Updated: 2023/01/30 16:02:57 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:01:11 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	check_builtin_fork(t_node *node, t_info *info)
 	free_env(info);
 	free_nodes(info);
 	free(info->input);
+	free(info->cmd_input);
 	exit(g_status);
 	return (1);
 }
