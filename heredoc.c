@@ -3,8 +3,6 @@
 void	heredoc(t_info *info, int *i, t_node *cur)
 {
 	char	*line;
-	char	*heredoc;
-	char	*tmp;
 	int		fd;
 
 	fd = open(ft_itoa(*i), O_CREAT | O_WRONLY | O_TRUNC, 777);

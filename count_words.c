@@ -67,9 +67,7 @@ static char	*is_word(char *str, int *count)
 int	count_words(char *str)
 {
 	int		count;
-	char	*cpy;
 
-	cpy = str;
 	count = 0;
 	while (*str && *str != '\n')
 	{

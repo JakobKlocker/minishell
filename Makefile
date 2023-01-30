@@ -36,12 +36,12 @@ all: $(NAME)
 
 $(NAME):		
 		$(MAKE) all -C ./libft
-		$(CC) $(OPTION) $(NAME) $(SRC) libft/libft.a -lreadline
+		$(CC) $(FLAG) $(OPTION) $(NAME) $(SRC) libft/libft.a -lreadline
 
 run: 
 	$(MAKE) all -C ./libft
 	$(MAKE) re
-	$(CC) $(OPTION) $(NAME) $(SRC) libft/libft.a -lreadline && ./$(NAME)
+	$(CC) $(FLAG) $(OPTION) $(NAME) $(SRC) libft/libft.a -lreadline && ./$(NAME)
 
 val: all
 	make -C ./ clean

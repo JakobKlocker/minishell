@@ -10,7 +10,6 @@
 int	copy_env(t_info *info, char **envp)
 {
 	int			i;
-	int			len;
 	t_envlst	*head;
 
 	head = (t_envlst *)malloc(sizeof(t_envlst));

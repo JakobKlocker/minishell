@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	our_exit(t_node *node, t_info *info)
+void	our_exit(t_info *info)
 {
 	ft_printf("exit\n");
 	free_env(info);
@@ -34,13 +34,14 @@ void	free_nodes(t_info *info)
 	t_node	*cur;
 	t_node	*tmp;
 
+	tmp = NULL;
 	cur = info->head;
 	i = 0;
-	free_nodes_1(info, cur, tmp, i);
+	free_nodes_1(cur, tmp, i);
 	info->head = NULL;
 }
 
-void	free_nodes_1(t_info *info, t_node *cur, t_node *tmp, int i)
+void	free_nodes_1(t_node *cur, t_node *tmp, int i)
 {
 	while (cur)
 	{
@@ -68,5 +69,5 @@ void	free_nodes_1(t_info *info, t_node *cur, t_node *tmp, int i)
 void	call_perror_free(t_info *info)
 {
 	perror("Error occured with a Syscall\n");
-	our_exit(info->head, info);
+	our_exit(info);
 }

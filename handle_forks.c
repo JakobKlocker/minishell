@@ -6,6 +6,7 @@ void	handle_forks(t_info *info)
 	t_node	*cur;
 	int		cur_in;
 
+	pid = 0;
 	cur = info->head;
 	cur_in = STDIN_FILENO;
 	if (!cur->next)
@@ -50,8 +51,6 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in)
 
 void	handle_executer(t_info *info, t_node *cur)
 {
-	int	pid;
-
 	dup2(cur->in, 0);
 	dup2(cur->out, 1);
 	executer(info, cur);

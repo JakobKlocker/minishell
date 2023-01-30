@@ -24,11 +24,7 @@ char	**list_to_2d(t_info *info)
 void	executer(t_info *info, t_node *cur)
 {
 	char	**envp;
-	int		pid;
-	int		i;
-	int		out;
 
-	i = 0;
 	envp = list_to_2d(info);
 	execve(cur->full_path, cur->full_cmd, envp);
 }

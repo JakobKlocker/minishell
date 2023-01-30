@@ -51,9 +51,6 @@ int	check_for_sc(char *str)
 
 void	print_arg(char *str, int type)
 {
-	int	i;
-
-	i = 0;
 	if (type == 1)
 	{
 		ft_putstr_fd("bash: export: `", 2);

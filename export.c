@@ -3,7 +3,7 @@
 void	export(t_node *node, t_info *info)
 {
 	if (arg_c(node) == 1)
-		print_export(node, info);
+		print_export(info);
 	else
 		export_var(node, info);
 }
@@ -34,7 +34,7 @@ void	export_var(t_node *node, t_info *info)
 	}
 }
 
-void	print_export(t_node *node, t_info *info)
+void	print_export(t_info *info)
 {
 	int		i;
 	char	**envp;

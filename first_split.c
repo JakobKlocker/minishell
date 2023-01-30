@@ -29,7 +29,7 @@ static int	getlen_till_ch(char *s, char c)
 	return (i);
 }
 
-static int	getlen_till_ch_1(char *s, char c, int i)
+int	getlen_till_ch_1(char *s, char c, int i)
 {
 	while (s[i])
 	{
@@ -119,6 +119,7 @@ char	**first_split(char *s)
 	int		j;
 
 	j = 0;
+	i = 0;
 	if (!s)
 		return (NULL);
 	ret = do_split(s, i, j);
