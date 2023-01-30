@@ -1,19 +1,31 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   inc_shlvl.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 14:12:06 by jklocker          #+#    #+#             */
+/*   Updated: 2023/01/30 15:13:31 by jklocker         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	inc_shlvl(t_info *info)
 {
 	int			lvl;
 	char		*new_str;
+	char		*tmp;
 	t_envlst	*cur;
 
 	lvl = get_shlvl(info);
 	if (lvl == -1)
 		return ;
 	lvl++;
-	new_str = malloc(ft_strlen(ft_itoa(lvl)) + 7);
-	if (!new_str)
-		exit(1);
-	new_str = ft_strjoin("SHLVL=", ft_itoa(lvl));
+	tmp	= ft_itoa(lvl);
+	new_str = ft_strjoin("SHLVL=", tmp);
+	free(tmp);
 	cur = info->envp;
 	while (cur)
 	{

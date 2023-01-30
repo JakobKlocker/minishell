@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   signal.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 14:12:36 by jklocker          #+#    #+#             */
+/*   Updated: 2023/01/30 14:12:38 by jklocker         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 #include <signal.h>
 
@@ -46,8 +58,6 @@ void	handle_sigquitfork(int sig)
 	if (sig == SIGQUIT)
 	{
 		ft_putstr_fd("Quit (core dumped)\n", 2);
-		write (2, " ", 1);
 		g_status = 130;
-		exit(g_status);
 	}
 }

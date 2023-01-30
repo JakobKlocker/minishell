@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/30 14:12:47 by jklocker          #+#    #+#             */
+/*   Updated: 2023/01/30 15:48:04 by jklocker         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 void	acess_env(t_info *info, int id)
@@ -30,6 +42,7 @@ void	init_info(t_info *info)
 {
 	info->head = NULL;
 	info->cmd_input = NULL;
+	info->input = NULL;
 }
 
 void	insert(t_info *info, char *str)
