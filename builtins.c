@@ -90,7 +90,7 @@ void	env(t_info *info)
 	t_envlst	*temp;
 
 	temp = info->envp;
-	while (temp->next != NULL)
+	while (temp)
 	{
 		printf("%s\n", temp->var);
 		temp = temp->next;
