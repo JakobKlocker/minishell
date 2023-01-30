@@ -47,7 +47,6 @@ char	*do_replace(char *str, char *env_pos, char *dol_pos, int our_var_len)
 void	replace_env(char **str, int i, char *dol_pos, t_info *info)
 {
 	int		our_var_len;
-	char	*env_var;
 	char	*env_pos;
 	char	*ret;
 
@@ -84,14 +83,13 @@ void	expander(char **str, t_info *info)
 
 char	*get_dol_pos(char *str)
 {
-	int	i;
 	int	in_quotes;
 
 	in_quotes = 0;
 	while (*str)
 	{
 		if (*str == '"' && in_quotes == 1)
-			in_quotes == 0;
+			in_quotes = 0;
 		if (*str == '"' && ft_strchr(str + 1, '"') && in_quotes == 0)
 			in_quotes = 1;
 		if (*str == '\'' && ft_strchr(str + 1, '\'') && in_quotes == 0)

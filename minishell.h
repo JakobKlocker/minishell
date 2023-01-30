@@ -75,7 +75,7 @@ int					arg_c(t_node *node);
 int					check_alpha(char *str);
 
 //env_functions
-static int			get_env_lines(char **envp);
+//static int			get_env_lines(char **envp);
 int					copy_env(t_info *info, char **envp);
 void				copy_env_1(t_info *info, char **envp, int i,
 						t_envlst *head);
@@ -83,10 +83,10 @@ void				copy_env_1(t_info *info, char **envp, int i,
 //first split
 
 int					count_words(char *str);
-static int			getlen_till_ch(char *s, char c);
-static int			getlen_till_ch_1(char *s, char c, int i);
-static char			**malloc_2d(char *s, char c);
-static char			**do_split(char *s, int i, int j);
+//static int			getlen_till_ch(char *s, char c);
+int					getlen_till_ch_1(char *s, char c, int i);
+//static char			**malloc_2d(char *s, char c);
+//static char			**do_split(char *s, int i, int j);
 char				**first_split(char *s);
 
 //expander
@@ -109,14 +109,14 @@ void				get_user_input(t_info *info);
 char				*is_in_quotes(char *str, int *count);
 
 //remove quotes
-void				**remove_quotes(char **s);
+void				remove_quotes(char **s);
 int					count_quotes(char *str);
 char				*do_remove(char *str);
 
 //export.c
 void				export(t_node *node, t_info *info);
 void				export_var(t_node *node, t_info *info);
-void				print_export(t_node *node, t_info *info);
+void				print_export(t_info *info);
 int					count_var(t_info *info);
 void				print_env(char **envp);
 
@@ -188,10 +188,10 @@ void				handle_sigintfork(int sig);
 void				handle_sigquitfork(int sig);
 
 //free.c
-void				our_exit(t_node *node, t_info *info);
+void				our_exit(t_info *info);
 void				free_env(t_info *info);
 void				free_nodes(t_info *info);
-void				free_nodes_1(t_info *info, t_node *cur, t_node *tmp, int i);
+void				free_nodes_1(t_node *cur, t_node *tmp, int i);
 void				call_perror_free(t_info *info);
 
 //inc_shlvl.c
@@ -199,7 +199,7 @@ void				inc_shlvl(t_info *info);
 int					get_shlvl(t_info *info);
 
 //our_exit_builtin.c
-void				our_exit_builtin(t_node *node, t_info *info);
+void				our_exit_builtin(t_info *info);
 int					is_all_digit(char *str);
 
 #endif

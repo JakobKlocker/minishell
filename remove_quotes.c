@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	**remove_quotes(char **s)
+void	remove_quotes(char **s)
 {
 	int		i;
 	char	*tmp;

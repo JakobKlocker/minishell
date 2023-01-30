@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	our_exit_builtin(t_node *node, t_info *info)
+void	our_exit_builtin(t_info *info)
 {
 	ft_printf("exit\n");
 	if (info->head->full_cmd[1] && is_all_digit(info->head->full_cmd[1]) == 0)

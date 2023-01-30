@@ -9,4 +9,5 @@ int	prepare_nodes(t_info *info)
 	malloc_2d_nodes(info);
 	create_redircets(info);
 	create_full_cmd(info);
+	return (0);
 }
