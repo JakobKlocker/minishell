@@ -174,6 +174,7 @@ void				handle_forks(t_info *info);
 void				add_pipe_fd(t_node *node, t_info *info);
 void				handle_executer(t_info *info, t_node *cur);
 void				loop_forks(t_info *info, t_node *cur, int pid, int cur_in);
+void				node_check_path(t_node *cur);
 
 //signal.c
 void				handle_sigint(int sig);
@@ -192,5 +193,9 @@ void				call_perror_free(t_info *info);
 //inc_shlvl.c
 void				inc_shlvl(t_info *info);
 int					get_shlvl(t_info *info);
+
+//our_exit_builtin.c
+void				our_exit_builtin(t_node *node, t_info *info);
+int					is_all_digit(char *str);
 
 #endif

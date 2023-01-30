@@ -25,6 +25,7 @@ SRC = main.c \
 	free.c \
 	inc_shlvl.c \
 	builtins_fork.c \
+	our_exit_builtin.c \
 
 OBJ = $(SRC:.c=.o)
 CC = gcc

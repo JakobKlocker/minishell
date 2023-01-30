@@ -12,7 +12,7 @@ int	check_builtin(t_node *node, t_info *info)
 	else if (ft_strcmp(node->full_cmd[0], "unset") == 0 && i == 5)
 		unset(node, info);
 	else if (ft_strcmp(node->full_cmd[0], "exit") == 0 && i == 4)
-		our_exit(node, info);
+		our_exit_builtin(node, info);
 	else if (ft_strcmp(node->full_cmd[0], "cd") == 0 && i == 2)
 		cd(node, info);
 	else
