@@ -13,6 +13,7 @@ void	handle_forks(t_info *info)
 		if (check_builtin(cur, info) == 1)
 			return ;
 	}
+	handle_signals(2);
 	loop_forks(info, cur, pid, cur_in);
 	if (g_status != 0 && g_status != 1 && g_status != 2)
 		g_status = 127;
@@ -23,7 +24,6 @@ void	loop_forks(t_info *info, t_node *cur, int pid, int cur_in)
 	while (cur)
 	{
 		pipe(info->fd);
-		handle_signals(2);
 		node_check_path(cur);
 		pid = fork();
 		if (pid == -1)

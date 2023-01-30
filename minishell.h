@@ -77,6 +77,7 @@ int					check_alpha(char *str);
 //env_functions
 static int			get_env_lines(char **envp);
 int					copy_env(t_info *info, char **envp);
+void				copy_env_1(t_info *info, char **envp, int i, t_envlst *head);
 
 //first split
 
