@@ -19,7 +19,7 @@ void	unset(t_node *node, t_info *info)
 	i = 1;
 	while (node->full_cmd[i])
 	{
-		if (check_exist(info, node->full_cmd[i]) == 0)
+		if (check_existing(info, node->full_cmd[i]) == 0)
 		{
 			delete_node(node->full_cmd[i], info);
 			g_status = 0;
@@ -68,13 +68,13 @@ void	delete_node(char *str, t_info *info)
 	t_envlst	*prev;
 
 	temp = info->envp;
-	if (temp != NULL && ft_strcmpeq(temp->var, str) == 0)
+	if (temp != NULL && ft_strcmpequnset(temp->var, str) == 0)
 	{
 		info->envp = temp->next;
 		free(temp);
 		return ;
 	}
-	while (temp && ft_strcmpeq(temp->var, str) != 0)
+	while (temp && ft_strcmpequnset(temp->var, str) != 0)
 	{
 		prev = temp;
 		temp = temp->next;
