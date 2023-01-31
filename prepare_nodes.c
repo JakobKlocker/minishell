@@ -6,7 +6,7 @@
 /*   By: jklocker <jklocker@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 14:12:21 by jklocker          #+#    #+#             */
-/*   Updated: 2023/01/30 14:12:21 by jklocker         ###   ########.fr       */
+/*   Updated: 2023/01/31 13:20:06 by jklocker         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,7 @@ void	create_fd_in(t_info *info, int *i, t_node *cur)
 {
 	int	fd;
 
-	if (info->cmd_input[*i][1] == '\0')
-		fd = open(info->cmd_input[*i + 1], O_RDWR);
+	fd = open(info->cmd_input[*i + 1], O_RDWR);
 	cur->in = fd;
 	*i = *i + 1;
 }

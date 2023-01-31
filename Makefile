@@ -28,7 +28,7 @@ SRC = main.c \
 	our_exit_builtin.c \
 
 OBJ = $(SRC:.c=.o)
-CC = gcc
+CC = cc
 FLAG = -Wall -Werror -Wextra
 OPTION = -o
 
