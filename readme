@@ -1,12 +1,19 @@
-Minishell 42 is a project assigned to students at the 42 coding school. 
-It requires students to create their own simplified shell or command-line interface (CLI) that can interpret and execute user commands.
+While working on the Minishell 42 project, students learn several important concepts and skills related to systems programming and operating systems. Some of these include:
 
-A shell is a program that acts as an intermediary between the user and the operating system. 
-It allows the user to interact with the operating system by accepting commands from the user, interpreting them, and executing them.
+    Processes and system calls: Students learn about processes and how to use system calls to create, manage, and manipulate processes.
 
-In the Minishell 42 project, students are required to build a basic shell that supports some of the most common shell functionalities, 
-such as handling environment variables, executing basic commands, managing signals, handling input/output redirection, and implementing pipes.
+    Memory management: Students learn about memory allocation and deallocation and how to manage memory efficiently.
 
-The purpose of the project is to help students learn about system calls, processes, and how shells work. 
-Additionally, students will gain experience with the C programming language, UNIX system programming, and improve their problem-solving skills. 
-The project is an important step towards understanding the internals of the operating system and the role of shells in it.
+    Input/output: Students learn how to handle input and output streams, as well as how to implement basic input/output redirection.
+
+    Signals: Students learn about signals and how to handle them in their shell, including how to catch and respond to signals like Ctrl-C or Ctrl-D.
+
+    Parsing: Students learn about parsing and how to break down user commands into tokens, which can then be executed by the shell.
+
+    Command execution: Students learn how to execute commands entered by the user using system calls like execve.
+
+    Environment variables: Students learn how to handle environment variables and implement basic functionality for setting and getting environment variables.
+
+    Pipes: Students learn about pipes and how to implement basic pipe functionality to enable the user to pipe output from one command to the input of another.
+
+Overall, the Minishell 42 project provides students with valuable experience working with the C programming language, as well as a deeper understanding of how shells and operating systems work.
