@@ -1,7 +1,12 @@
-Minishell 42 is a project assigned to students at the 42 coding school. It requires students to create their own simplified shell or command-line interface (CLI) that can interpret and execute user commands.
+Minishell 42 is a project assigned to students at the 42 coding school. 
+It requires students to create their own simplified shell or command-line interface (CLI) that can interpret and execute user commands.
 
-A shell is a program that acts as an intermediary between the user and the operating system. It allows the user to interact with the operating system by accepting commands from the user, interpreting them, and executing them.
+A shell is a program that acts as an intermediary between the user and the operating system. 
+It allows the user to interact with the operating system by accepting commands from the user, interpreting them, and executing them.
 
-In the Minishell 42 project, students are required to build a basic shell that supports some of the most common shell functionalities, such as handling environment variables, executing basic commands, managing signals, handling input/output redirection, and implementing pipes.
+In the Minishell 42 project, students are required to build a basic shell that supports some of the most common shell functionalities, 
+such as handling environment variables, executing basic commands, managing signals, handling input/output redirection, and implementing pipes.
 
-The purpose of the project is to help students learn about system calls, processes, and how shells work. Additionally, students will gain experience with the C programming language, UNIX system programming, and improve their problem-solving skills. The project is an important step towards understanding the internals of the operating system and the role of shells in it.
+The purpose of the project is to help students learn about system calls, processes, and how shells work. 
+Additionally, students will gain experience with the C programming language, UNIX system programming, and improve their problem-solving skills. 
+The project is an important step towards understanding the internals of the operating system and the role of shells in it.
