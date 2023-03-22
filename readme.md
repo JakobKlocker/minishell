@@ -41,5 +41,5 @@ Hello, World!
 </code></pre>
 <p>This will create a new file called hello.txt and write the output of the echo command to it.</p>
 <p>Pipes work as they do in the offical shell, creating one child process each pipe</p>
-<pre><code class="language-bash">$ cat file1.txt | sort
+<pre><code class="language-bash">$ cat hello.txt | sort
 </code></pre>
