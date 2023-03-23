@@ -3,10 +3,10 @@
 <h2>Features</h2>
 <p>Minishell supports the following features:</p>
 <ul>
-<li>Execution of basic commands (e.g., <strong>ls, echo, pwd, cat, etc.</strong>)</li>
+<li>Execution of basic commands (<strong>ls, echo, pwd, cat, etc.</strong>)</li>
 <li>Basic redirections (e.g., <strong>&gt;, &lt;, &gt;&gt;</strong>)</li>
-<li>Environment variables management (e.g., <strong>export, unset</strong>)</li>
-<li>Basic signal handling (e.g., <strong>ctrl+C, ctrl+D</strong>)</li>
+<li>Environment variables management (<strong>export, unset</strong>)</li>
+<li>Basic signal handling (<strong>ctrl+C, ctrl+D</strong>)</li>
 <li>Pipes ( <strong>|</strong> )</li>
 </ul>
 <h2>Getting Started</h2>
