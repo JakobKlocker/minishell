@@ -28,14 +28,14 @@ int	main(int argc, char **argv, char **envp)
 
 void	get_user_input(t_info *info)
 {
-	char	*asd;
+	char	*line;
 
 	while (1)
 	{
 		init_info(info);
 		handle_signals(1);
-		asd = readline(CYELLOW "minishell: " RESET);
-		info->input = ft_strtrim(asd, " ");
+		line = readline(CYELLOW "minishell: " RESET);
+		info->input = ft_strtrim(line, " ");
 		if (info->input == NULL)
 			our_exit(info);
 		if (info->input[0] == '\0')
